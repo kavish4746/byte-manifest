@@ -3,7 +3,7 @@ jobId: "488"
 jobName: test_drdp_19th_march
 jobType: Consumption Ready Data Product
 domain: operation
-alias: test
+alias: test_drdp_19th_march
 discoveryPort:
   name: test_drdp_19th_march
 inputPorts:
@@ -31,7 +31,29 @@ productState:
   alias: test
   refreshInterval: 10 2 * * *
   retentionVersions: ""
-  logicalSchema: ""
+  logicalSchema:
+    properties:
+      City:
+        type: STRING
+        description: ""
+      Region:
+        type: STRING
+        description: ""
+      Country:
+        type: STRING
+        description: ""
+      Latitude:
+        type: STRING
+        description: ""
+      Longitude:
+        type: STRING
+        description: ""
+      Timezone:
+        type: STRING
+        description: ""
+      Local Time:
+        type: STRING
+        description: ""
   enforceSchemaMethod: ""
   isProfilingEnabled: false
 transformation:
