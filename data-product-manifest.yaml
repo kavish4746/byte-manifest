@@ -1,11 +1,11 @@
 version: 0.0.1
-jobId: "484"
-jobName: test_ADP_19th_march
-jobType: Aggregated Data Product
+jobId: "488"
+jobName: test_drdp_19th_march
+jobType: Consumption Ready Data Product
 domain: operation
-alias: test_mysql_19th_march
+alias: test
 discoveryPort:
-  name: test_ADP_19th_march
+  name: test_drdp_19th_march
 inputPorts:
   - alias: gcp_read_csv_Mansi_1
     isDynamic: true
@@ -21,57 +21,33 @@ inputPorts:
     type: inputDelimited
 productState:
   persistDataFrame: false
-  primaryKey: test_mysql
   enableDataReconciliation: false
   enforceSchema: false
-  stepName: test_mysql
-  connection: ""
-  tableName/query: test_mysql
-  type: readMySqlDbUsingJdbc
+  stepName: test
+  path: test
+  type: inputDelimited
   isStateManagement: true
   sequence: 3
-  alias: test_mysql
-  refreshInterval: 5 * * * *
+  alias: test
+  refreshInterval: 10 2 * * *
   retentionVersions: ""
-  logicalSchema:
-    properties:
-      City:
-        type: STRING
-        description: ""
-      Region:
-        type: STRING
-        description: ""
-      Country:
-        type: STRING
-        description: ""
-      Latitude:
-        type: STRING
-        description: ""
-      Longitude:
-        type: STRING
-        description: ""
-      Timezone:
-        type: STRING
-        description: ""
-      Local Time:
-        type: STRING
-        description: ""
+  logicalSchema: ""
   enforceSchemaMethod: ""
   isProfilingEnabled: false
 transformation:
   - isDynamic: true
     alias: EMR_PySpark_1
-    description: test_pyspark
+    description: test
     sequence: 2
     arguments:
       - gs://dabur_poc_inutdata/scd1_testing_csv/incr_1.csv
-    pythonFilePath: test_pyspark
+    pythonFilePath: tes
     inputDataFrameList:
       - inputDataFrame: ""
         tempViewName: ""
     optional:
-      pythonExtraZipFilePath: test_pyspark
-      pythonEnvTarGZPath: test_pyspark
+      pythonExtraZipFilePath: test
+      pythonEnvTarGZPath: test
     type: customPySparkEMRServerless
 controlPort:
   dataQualityRules: {}
@@ -81,4 +57,4 @@ outputPort:
       queryType: SQL
     - channelType: Dataproduct
       queryType: SQL
-timeout: 5
+timeout: 10
