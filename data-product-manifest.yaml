@@ -1,12 +1,11 @@
-version: 0.0.2
-jobId: "481"
-jobName: Test_19th_march
-jobType: Source Aligned Data Product
+version: 0.0.1
+jobId: "484"
+jobName: test_ADP_19th_march
+jobType: Aggregated Data Product
 domain: operation
-alias: test_kavish_19_th
+alias: test_mysql
 discoveryPort:
-  name: Test_19th_march
-  shortDescription: test 
+  name: test_ADP_19th_march
 inputPorts:
   - alias: gcp_read_csv_Mansi_1
     isDynamic: true
@@ -22,53 +21,36 @@ inputPorts:
     type: inputDelimited
 productState:
   persistDataFrame: false
-  catalogType: glue
+  primaryKey: test_mysql
+  enableDataReconciliation: false
   enforceSchema: false
-  stepName: test
-  tableName: test
-  warehousePath: test
-  catalogName: test
-  type: readDataIceberg
+  stepName: test_mysql
+  connection: ""
+  tableName/query: test_mysql
+  type: readMySqlDbUsingJdbc
   isStateManagement: true
   sequence: 3
-  alias: test
-  refreshInterval: 5 1 * * *
+  alias: test_mysql
+  refreshInterval: 5 * * * *
   retentionVersions: ""
-  logicalSchema:
-    properties:
-      City:
-        type: STRING
-        description: ""
-      Region:
-        type: STRING
-        description: ""
-      Country:
-        type: STRING
-        description: ""
-      Latitude:
-        type: STRING
-        description: ""
-      Longitude:
-        type: STRING
-        description: ""
-      Timezone:
-        type: STRING
-        description: ""
-      Local Time:
-        type: STRING
-        description: ""
+  logicalSchema: ""
   enforceSchemaMethod: ""
   isProfilingEnabled: false
 transformation:
   - isDynamic: true
-    alias: Sagemaker_1
-    description: test
+    alias: EMR_PySpark_1
+    description: test_pyspark
     sequence: 2
-    pipelineName: ""
+    arguments:
+      - gs://dabur_poc_inutdata/scd1_testing_csv/incr_1.csv
+    pythonFilePath: test_pyspark
+    inputDataFrameList:
+      - inputDataFrame: ""
+        tempViewName: ""
     optional:
-      persistDataFrame: false
-    type: customAWSSagemaker
-    inputDataFrame: gcp_read_csv_Mansi_1
+      pythonExtraZipFilePath: test_pyspark
+      pythonEnvTarGZPath: test_pyspark
+    type: customPySparkEMRServerless
 controlPort:
   dataQualityRules: {}
 outputPort:
