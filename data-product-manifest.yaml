@@ -6,7 +6,7 @@ domain: operation
 alias: test_kavish_19_th
 discoveryPort:
   name: Test_19th_march
-  description: test 
+  shortDescription: test 
 inputPorts:
   - alias: gcp_read_csv_Mansi_1
     isDynamic: true
