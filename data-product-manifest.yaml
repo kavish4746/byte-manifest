@@ -56,7 +56,6 @@ productState:
       Local Time:
         type: STRING
         description: ""
-  logicalSchema: ""
   enforceSchemaMethod: ""
   isProfilingEnabled: false
 transformation:
