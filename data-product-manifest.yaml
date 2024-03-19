@@ -1,0 +1,57 @@
+version: 0.0.2
+jobId: "481"
+jobName: Test_19th_march
+jobType: Source Aligned Data Product
+domain: operation
+alias: test
+discoveryPort:
+  name: Test_19th_march
+inputPorts:
+  - alias: gcp_read_csv_Mansi_1
+    isDynamic: true
+    path: gs://dabur_poc_inutdata/scd1_testing_csv/incr_1.csv
+    optional:
+      persistDataFrame: false
+      advanceOptions:
+        delimiter: ","
+      enableDataReconciliation: false
+      enforceSchema: false
+      connection: mansi_gcp_dummy
+      dataSetUrn: urn:dv:dataset:7dd6d6aa-4f56-4a6a-a558-b227ba5ad7c2
+    type: inputDelimited
+productState:
+  persistDataFrame: false
+  catalogType: glue
+  enforceSchema: false
+  stepName: test
+  tableName: test
+  warehousePath: test
+  catalogName: test
+  type: readDataIceberg
+  isStateManagement: true
+  sequence: 3
+  alias: test
+  refreshInterval: 5 1 * * *
+  retentionVersions: ""
+  logicalSchema: ""
+  enforceSchemaMethod: ""
+  isProfilingEnabled: false
+transformation:
+  - isDynamic: true
+    alias: Sagemaker_1
+    description: test
+    sequence: 2
+    pipelineName: ""
+    optional:
+      persistDataFrame: false
+    type: customAWSSagemaker
+    inputDataFrame: gcp_read_csv_Mansi_1
+controlPort:
+  dataQualityRules: {}
+outputPort:
+  subscriptionChannels:
+    - channelType: Postgres
+      queryType: SQL
+    - channelType: Dataproduct
+      queryType: SQL
+timeout: 5
