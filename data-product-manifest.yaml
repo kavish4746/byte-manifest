@@ -3,7 +3,7 @@ jobId: "594"
 jobName: test_17th april
 jobType: Source Aligned Data Product
 domain: finance
-alias: test_17th april_finance
+alias: test_17th_april_finance
 discoveryPort:
   name: test_17th april
 inputPorts:
@@ -29,7 +29,7 @@ productState:
   type: readMySqlDbUsingJdbc
   isStateManagement: true
   sequence: 3
-  alias: test_17th april_product_state
+  alias: test_17th_april_product_state
   refreshInterval: 5 * * * *
   retentionVersions: ""
   logicalSchema:
