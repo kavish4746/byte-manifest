@@ -1,82 +1,50 @@
 version: 0.0.1
-jobId: "488"
-jobName: test_drdp_19th_march
-jobType: Consumption Ready Data Product
-domain: operation
-alias: test_drdp_19th_march
+jobId: "594"
+jobName: test_17th april
+jobType: Source Aligned Data Product
+domain: finance
+alias: ""
 discoveryPort:
-  name: test_drdp_19th_march
+  name: test_17th april
 inputPorts:
-  - alias: gcp_read_csv_Mansi_1
+  - alias: read_csv_s3_vishnu_1
     isDynamic: true
-    path: gs://dabur_poc_inutdata/scd1_testing_csv/incr_1.csv
+    path: s3://byte-etl-externaldemo/University_Admsn_Data/csv_files/univ_admsn_sample.csv
     optional:
       persistDataFrame: false
       advanceOptions:
         delimiter: ","
       enableDataReconciliation: false
       enforceSchema: false
-      connection: mansi_gcp_dummy
-      dataSetUrn: urn:dv:dataset:7dd6d6aa-4f56-4a6a-a558-b227ba5ad7c2
+      connection: read_csv_s3_conn
+      dataSetUrn: urn:dv:dataset:8f748d5a-60fd-4fca-9b73-b47232b7b81b
     type: inputDelimited
 productState:
   persistDataFrame: false
   enableDataReconciliation: false
   enforceSchema: false
-  stepName: test
-  path: test
-  type: inputDelimited
+  stepName: ""
+  connection: ""
+  tableName/query: ""
+  type: readMySqlDbUsingJdbc
   isStateManagement: true
   sequence: 3
-  alias: test
-  refreshInterval: 10 2 * * *
+  alias: ""
+  refreshInterval: 5 * * * *
   retentionVersions: ""
-  logicalSchema:
-    properties:
-      City:
-        type: STRING
-        description: ""
-      Region:
-        type: STRING
-        description: ""
-      Country:
-        type: STRING
-        description: ""
-      Latitude:
-        type: STRING
-        description: ""
-      Longitude:
-        type: STRING
-        description: ""
-      Timezone:
-        type: STRING
-        description: ""
-      Local Time:
-        type: STRING
-        description: ""
+  logicalSchema: ""
   enforceSchemaMethod: ""
   isProfilingEnabled: false
 transformation:
   - isDynamic: true
-    alias: EMR_PySpark_1
-    description: test
+    alias: Sagemaker_1
+    description: ""
     sequence: 2
-    arguments:
-      - gs://dabur_poc_inutdata/scd1_testing_csv/incr_1.csv
-    pythonFilePath: tes
-    inputDataFrameList:
-      - inputDataFrame: ""
-        tempViewName: ""
+    pipelineName: ""
     optional:
-      pythonExtraZipFilePath: test
-      pythonEnvTarGZPath: test
-    type: customPySparkEMRServerless
+      persistDataFrame: false
+    type: customAWSSagemaker
+    inputDataFrame: read_csv_s3_vishnu_1
 controlPort:
   dataQualityRules: {}
-outputPort:
-  subscriptionChannels:
-    - channelType: Postgres
-      queryType: SQL
-    - channelType: Dataproduct
-      queryType: SQL
-timeout: 10
+timeout: 5
