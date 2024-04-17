@@ -1,9 +1,9 @@
-version: 0.0.2
+version: 0.0.3
 jobId: "600"
 jobName: test_17th april copy
 jobType: Source Aligned Data Product
 domain: finance
-alias: test_17th_april_copy
+alias: test
 discoveryPort:
   name: test_17th april copy
 inputPorts:
@@ -21,41 +21,20 @@ inputPorts:
     type: inputDelimited
 productState:
   persistDataFrame: false
+  primaryKey: key
   enableDataReconciliation: false
   enforceSchema: false
+  enforceSchemaMethod: Warning
   stepName: test
   connection: Dummy test
-  tableName/query: ""
+  tableName/query: testQueryTable
   type: readMySqlDbUsingJdbc
   isStateManagement: true
   sequence: 3
   alias: test
   refreshInterval: 5 * * * *
   retentionVersions: ""
-  logicalSchema:
-    properties:
-      City:
-        type: STRING
-        description: ""
-      Region:
-        type: STRING
-        description: ""
-      Country:
-        type: STRING
-        description: ""
-      Latitude:
-        type: STRING
-        description: ""
-      Longitude:
-        type: STRING
-        description: ""
-      Timezone:
-        type: STRING
-        description: ""
-      Local Time:
-        type: STRING
-        description: ""
-  enforceSchemaMethod: ""
+  logicalSchema: ""
   isProfilingEnabled: false
 transformation:
   - isDynamic: true
@@ -69,4 +48,10 @@ transformation:
     inputDataFrame: read_csv_s3_vishnu_1
 controlPort:
   dataQualityRules: {}
+outputPort:
+  subscriptionChannels:
+    - channelType: Postgres
+      queryType: SQL
+    - channelType: Dataproduct
+      queryType: SQL
 timeout: 5
