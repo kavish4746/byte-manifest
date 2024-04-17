@@ -1,11 +1,11 @@
-version: 0.0.2
-jobId: "594"
-jobName: test_17th april
+version: 0.0.1
+jobId: "600"
+jobName: test_17th april copy
 jobType: Source Aligned Data Product
 domain: finance
-alias: test_17th_april_finance
+alias: ""
 discoveryPort:
-  name: test_17th april
+  name: test_17th april copy
 inputPorts:
   - alias: read_csv_s3_vishnu_1
     isDynamic: true
@@ -29,40 +29,18 @@ productState:
   type: readMySqlDbUsingJdbc
   isStateManagement: true
   sequence: 3
-  alias: test_17th_april_product_state
+  alias: ""
   refreshInterval: 5 * * * *
   retentionVersions: ""
-  logicalSchema:
-    properties:
-      City:
-        type: STRING
-        description: ""
-      Region:
-        type: STRING
-        description: ""
-      Country:
-        type: STRING
-        description: ""
-      Latitude:
-        type: STRING
-        description: ""
-      Longitude:
-        type: STRING
-        description: ""
-      Timezone:
-        type: STRING
-        description: ""
-      Local Time:
-        type: STRING
-        description: ""
+  logicalSchema: ""
   enforceSchemaMethod: ""
   isProfilingEnabled: false
 transformation:
   - isDynamic: true
     alias: Sagemaker_1
-    description: ""
+    description: test
     sequence: 2
-    pipelineName: ""
+    pipelineName: test
     optional:
       persistDataFrame: false
     type: customAWSSagemaker
