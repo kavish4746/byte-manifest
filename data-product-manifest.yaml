@@ -1,9 +1,9 @@
-version: 0.0.1
+version: 0.0.2
 jobId: "600"
 jobName: test_17th april copy
 jobType: Source Aligned Data Product
 domain: finance
-alias: test_17th_april_copy
+alias: test
 discoveryPort:
   name: test_17th april copy
 inputPorts:
@@ -23,46 +23,24 @@ productState:
   persistDataFrame: false
   enableDataReconciliation: false
   enforceSchema: false
-  stepName: ""
-  connection: ""
+  stepName: test
+  connection: Dummy test
   tableName/query: ""
   type: readMySqlDbUsingJdbc
   isStateManagement: true
   sequence: 3
-  alias: ""
+  alias: test
   refreshInterval: 5 * * * *
   retentionVersions: ""
-  logicalSchema:
-    properties:
-      City:
-        type: STRING
-        description: ""
-      Region:
-        type: STRING
-        description: ""
-      Country:
-        type: STRING
-        description: ""
-      Latitude:
-        type: STRING
-        description: ""
-      Longitude:
-        type: STRING
-        description: ""
-      Timezone:
-        type: STRING
-        description: ""
-      Local Time:
-        type: STRING
-        description: ""
+  logicalSchema: ""
   enforceSchemaMethod: ""
   isProfilingEnabled: false
 transformation:
   - isDynamic: true
     alias: Sagemaker_1
-    description: test
+    description: test_new
     sequence: 2
-    pipelineName: test
+    pipelineName: test_new
     optional:
       persistDataFrame: false
     type: customAWSSagemaker
