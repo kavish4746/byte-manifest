@@ -3,7 +3,7 @@ jobId: "600"
 jobName: test_17th april copy
 jobType: Source Aligned Data Product
 domain: finance
-alias: test
+alias: test_17th_april_copy
 discoveryPort:
   name: test_17th april copy
 inputPorts:
