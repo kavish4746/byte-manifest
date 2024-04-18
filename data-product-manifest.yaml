@@ -1,9 +1,9 @@
 version: 0.0.4
 jobId: "614"
-jobName: 18thApril_sadp_kavish
+jobName: 18thApril_sadp_kavish_
 jobType: Source Aligned Data Product
 domain: operation
-alias: step_test_18_kavish
+alias: step_test_18_kavish_18
 discoveryPort:
   name: 18thApril_sadp_kavish
 inputPorts:
