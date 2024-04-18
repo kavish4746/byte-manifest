@@ -48,10 +48,4 @@ transformation:
     inputDataFrame: read_csv_s3_vishnu_1
 controlPort:
   dataQualityRules: {}
-outputPort:
-  subscriptionChannels:
-    - channelType: Postgres
-      queryType: SQL
-    - channelType: Dataproduct
-      queryType: SQL
 timeout: 5
