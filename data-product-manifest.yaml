@@ -71,10 +71,4 @@ transformation:
     inputDataFrame: gcp_read_csv_Mansi_1
 controlPort:
   dataQualityRules: {}
-outputPort:
-  subscriptionChannels:
-    - channelType: Postgres
-      queryType: SQL
-    - channelType: Dataproduct
-      queryType: SQL
 timeout: 5
