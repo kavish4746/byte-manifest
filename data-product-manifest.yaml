@@ -25,7 +25,7 @@ productState:
   enableDataReconciliation: false
   enforceSchema: false
   enforceSchemaMethod: Warning
-  stepName: step_test
+  stepName: step_test_kavish
   connection: Dummy test
   tableName/query: test table
   type: readMySqlDbUsingJdbc
