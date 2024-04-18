@@ -1,9 +1,9 @@
-version: 0.0.3
+version: 0.0.4
 jobId: "600"
 jobName: test_17th april copy
 jobType: Source Aligned Data Product
 domain: finance
-alias: test_17th_april_copy
+alias: test1
 discoveryPort:
   name: test_17th april copy
 inputPorts:
@@ -25,49 +25,33 @@ productState:
   enableDataReconciliation: false
   enforceSchema: false
   enforceSchemaMethod: Warning
-  stepName: test
+  stepName: test1
   connection: Dummy test
-  tableName/query: testQueryTable
+  tableName/query: testQueryTable1
   type: readMySqlDbUsingJdbc
   isStateManagement: true
   sequence: 3
-  alias: test
+  alias: test1
   refreshInterval: 5 * * * *
   retentionVersions: ""
-  logicalSchema:
-    properties:
-      City:
-        type: STRING
-        description: ""
-      Region:
-        type: STRING
-        description: ""
-      Country:
-        type: STRING
-        description: ""
-      Latitude:
-        type: STRING
-        description: ""
-      Longitude:
-        type: STRING
-        description: ""
-      Timezone:
-        type: STRING
-        description: ""
-      Local Time:
-        type: STRING
-        description: ""
+  logicalSchema: ""
   isProfilingEnabled: false
 transformation:
   - isDynamic: true
     alias: Sagemaker_1
-    description: test_new
+    description: test_new_1
     sequence: 2
-    pipelineName: test_new
+    pipelineName: test_new_1
     optional:
       persistDataFrame: false
     type: customAWSSagemaker
     inputDataFrame: read_csv_s3_vishnu_1
 controlPort:
   dataQualityRules: {}
+outputPort:
+  subscriptionChannels:
+    - channelType: Postgres
+      queryType: SQL
+    - channelType: Dataproduct
+      queryType: SQL
 timeout: 5
