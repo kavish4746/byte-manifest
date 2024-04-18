@@ -1,38 +1,36 @@
-version: 0.0.4
-jobId: "614"
-jobName: 18thApril_sadp_kavish_
+version: 0.0.1
+jobId: "594"
+jobName: test_17th april
 jobType: Source Aligned Data Product
-domain: operation
-alias: step_test_18_kavish_18
+domain: finance
+alias: test_18th_final
 discoveryPort:
-  name: 18thApril_sadp_kavish
+  name: test_17th april
 inputPorts:
-  - alias: gcp_read_csv_Mansi_1
+  - alias: read_csv_s3_vishnu_1
     isDynamic: true
-    path: gs://dabur_poc_inutdata/scd1_testing_csv/incr_1.csv
+    path: s3://byte-etl-externaldemo/University_Admsn_Data/csv_files/univ_admsn_sample.csv
     optional:
       persistDataFrame: false
       advanceOptions:
         delimiter: ","
       enableDataReconciliation: false
       enforceSchema: false
-      connection: mansi_gcp_dummy
-      dataSetUrn: urn:dv:dataset:7dd6d6aa-4f56-4a6a-a558-b227ba5ad7c2
+      connection: read_csv_s3_conn
+      dataSetUrn: urn:dv:dataset:8f748d5a-60fd-4fca-9b73-b47232b7b81b
     type: inputDelimited
 productState:
   persistDataFrame: false
-  primaryKey: test
   enableDataReconciliation: false
   enforceSchema: false
-  enforceSchemaMethod: Warning
-  stepName: step_test_kavish
-  connection: Dummy test
-  tableName/query: test table
+  stepName: ""
+  connection: ""
+  tableName/query: ""
   type: readMySqlDbUsingJdbc
   isStateManagement: true
   sequence: 3
-  alias: step_test
-  refreshInterval: "* * 5 * *"
+  alias: ""
+  refreshInterval: 5 * * * *
   retentionVersions: ""
   logicalSchema:
     properties:
@@ -57,17 +55,18 @@ productState:
       Local Time:
         type: STRING
         description: ""
+  enforceSchemaMethod: ""
   isProfilingEnabled: false
 transformation:
   - isDynamic: true
     alias: Sagemaker_1
-    description: 18thApril_test
+    description: ""
     sequence: 2
-    pipelineName: test_sadp_kavish
+    pipelineName: ""
     optional:
       persistDataFrame: false
     type: customAWSSagemaker
-    inputDataFrame: gcp_read_csv_Mansi_1
+    inputDataFrame: read_csv_s3_vishnu_1
 controlPort:
   dataQualityRules: {}
 timeout: 5
