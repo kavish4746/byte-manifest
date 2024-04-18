@@ -1,9 +1,9 @@
-version: 0.0.3
+version: 0.0.4
 jobId: "614"
 jobName: 18thApril_sadp_kavish
 jobType: Source Aligned Data Product
 domain: operation
-alias: 18thApril_sadp_kavish
+alias: step_test
 discoveryPort:
   name: 18thApril_sadp_kavish
 inputPorts:
@@ -21,41 +21,20 @@ inputPorts:
     type: inputDelimited
 productState:
   persistDataFrame: false
+  primaryKey: test
   enableDataReconciliation: false
   enforceSchema: false
-  stepName: ""
-  connection: ""
-  tableName/query: ""
+  enforceSchemaMethod: Warning
+  stepName: step_test
+  connection: Dummy test
+  tableName/query: test table
   type: readMySqlDbUsingJdbc
   isStateManagement: true
   sequence: 3
-  alias: ""
+  alias: step_test
   refreshInterval: "* * 5 * *"
   retentionVersions: ""
-  logicalSchema:
-    properties:
-      City:
-        type: STRING
-        description: ""
-      Region:
-        type: STRING
-        description: ""
-      Country:
-        type: STRING
-        description: ""
-      Latitude:
-        type: STRING
-        description: ""
-      Longitude:
-        type: STRING
-        description: ""
-      Timezone:
-        type: STRING
-        description: ""
-      Local Time:
-        type: STRING
-        description: ""
-  enforceSchemaMethod: ""
+  logicalSchema: ""
   isProfilingEnabled: false
 transformation:
   - isDynamic: true
