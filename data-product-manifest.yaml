@@ -3,7 +3,7 @@ jobId: "614"
 jobName: 18thApril_sadp_kavish
 jobType: Source Aligned Data Product
 domain: operation
-alias: step_test
+alias: step_test_18
 discoveryPort:
   name: 18thApril_sadp_kavish
 inputPorts:
@@ -34,7 +34,29 @@ productState:
   alias: step_test
   refreshInterval: "* * 5 * *"
   retentionVersions: ""
-  logicalSchema: ""
+  logicalSchema:
+    properties:
+      City:
+        type: STRING
+        description: ""
+      Region:
+        type: STRING
+        description: ""
+      Country:
+        type: STRING
+        description: ""
+      Latitude:
+        type: STRING
+        description: ""
+      Longitude:
+        type: STRING
+        description: ""
+      Timezone:
+        type: STRING
+        description: ""
+      Local Time:
+        type: STRING
+        description: ""
   isProfilingEnabled: false
 transformation:
   - isDynamic: true
