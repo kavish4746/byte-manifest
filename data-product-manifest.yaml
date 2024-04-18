@@ -3,9 +3,9 @@ jobId: "594"
 jobName: test_17th april
 jobType: Source Aligned Data Product
 domain: finance
-alias: test_18th_final_new_kavish
+alias: test_18th_final_new_kavish_1
 discoveryPort:
-  name: test_18thapril_new_u
+  name: test_18thapril_new_u_1
 inputPorts:
   - alias: read_csv_s3_vishnu_1
     isDynamic: true
