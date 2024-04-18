@@ -1,73 +1,50 @@
-version: 0.0.4
-jobId: "600"
-jobName: test_17th april copy
+version: 0.0.3
+jobId: "614"
+jobName: 18thApril_sadp_kavish
 jobType: Source Aligned Data Product
-domain: finance
-alias: test_17th_april_copy
+domain: operation
+alias: ""
 discoveryPort:
-  name: test_17th april copy
+  name: 18thApril_sadp_kavish
 inputPorts:
-  - alias: read_csv_s3_vishnu_1
+  - alias: gcp_read_csv_Mansi_1
     isDynamic: true
-    path: s3://byte-etl-externaldemo/University_Admsn_Data/csv_files/univ_admsn_sample.csv
+    path: gs://dabur_poc_inutdata/scd1_testing_csv/incr_1.csv
     optional:
       persistDataFrame: false
       advanceOptions:
         delimiter: ","
       enableDataReconciliation: false
       enforceSchema: false
-      connection: read_csv_s3_conn
-      dataSetUrn: urn:dv:dataset:8f748d5a-60fd-4fca-9b73-b47232b7b81b
+      connection: mansi_gcp_dummy
+      dataSetUrn: urn:dv:dataset:7dd6d6aa-4f56-4a6a-a558-b227ba5ad7c2
     type: inputDelimited
 productState:
   persistDataFrame: false
-  primaryKey: key
   enableDataReconciliation: false
   enforceSchema: false
-  enforceSchemaMethod: Warning
-  stepName: test1
-  connection: Dummy test
-  tableName/query: testQueryTable1
+  stepName: ""
+  connection: ""
+  tableName/query: ""
   type: readMySqlDbUsingJdbc
   isStateManagement: true
   sequence: 3
-  alias: test1
-  refreshInterval: 5 * * * *
+  alias: ""
+  refreshInterval: "* * 5 * *"
   retentionVersions: ""
-  logicalSchema:
-    properties:
-      City:
-        type: STRING
-        description: ""
-      Region:
-        type: STRING
-        description: ""
-      Country:
-        type: STRING
-        description: ""
-      Latitude:
-        type: STRING
-        description: ""
-      Longitude:
-        type: STRING
-        description: ""
-      Timezone:
-        type: STRING
-        description: ""
-      Local Time:
-        type: STRING
-        description: ""
+  logicalSchema: ""
+  enforceSchemaMethod: ""
   isProfilingEnabled: false
 transformation:
   - isDynamic: true
     alias: Sagemaker_1
-    description: test_new_1
+    description: 18thApril_test
     sequence: 2
-    pipelineName: test_new_1
+    pipelineName: test_sadp_kavish
     optional:
       persistDataFrame: false
     type: customAWSSagemaker
-    inputDataFrame: read_csv_s3_vishnu_1
+    inputDataFrame: gcp_read_csv_Mansi_1
 controlPort:
   dataQualityRules: {}
 timeout: 5
