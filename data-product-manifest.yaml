@@ -1,60 +1,57 @@
 version: 0.0.8
-jobId: "394"
-jobName: Test_iceberg_biglake_SCD1_Mansi
+jobId: "587"
+jobName: Oracle DP
 jobType: Source Aligned Data Product
-domain: operation
-alias: Write_ice7_19
+domain: hr
+alias: load_data_to_oracle_sadp_19_1
 discoveryPort:
-  name: Write_ice7_19_1
+  name: oracle_sadp_19_1
 inputPorts:
-  - alias: gcp_read_csv_Mansi_1
+  - alias: Oracle_Data_Set_Existing_1
     isDynamic: true
-    path: gs://dabur_poc_inutdata/scd1_testing_csv/incr_1.csv
+    connection: Oracle Data Connection Existing
+    tableName/query: byte-etl-test.NEWTABLE
     optional:
       persistDataFrame: false
-      advanceOptions:
-        delimiter: ","
       enableDataReconciliation: false
       enforceSchema: false
-      connection: mansi_gcp_dummy
-      dataSetUrn: urn:dv:dataset:7dd6d6aa-4f56-4a6a-a558-b227ba5ad7c2
-    type: inputDelimited
+      dataSetUrn: urn:dv:dataset:a449a8da-f182-4741-8bc8-7d336b431d82
+    type: readOracleDbUsingJdbc
 productState:
   isDynamic: true
-  alias: Write_ice
+  alias: load_data_to_oracle_sadp
   retentionVersions: ""
   logicalSchema:
     properties:
-      city: STRING
-  stateStoreType: loadDataIceberg
+      name:
+        type: STRING
+        description: ""
+  stateStoreType: writeDataFrameToOracleTable
   isProfilingEnabled: false
-  updateStrategy: SCD1
-  tableName: iceberg_db.scd1_data
-  warehousePath: gs://dabur_poc_inutdata/iceberg_warehouse/
-  catalogName: random_catalog
+  updateStrategy: Overwrite
+  connection: Oracle Data Connection Existing
+  tableName: '"byte-etl-test".NEWTABLE_ANEREE'
   optional:
     persistDataFrame: false
     enableDataReconciliation: false
     enforceSchema: false
-    enforceSchemaMethod: Warning
-    catalogType: biglake
-    changeTrackingColumns:
-      - value
-    timestampColumn: modified2
-    primaryKey:
-      - id
   refreshInterval: 0 10 31 2 1
 transformation:
   - isDynamic: true
-    alias: Spark_SQL_1
-    description: str_to_date
+    alias: Select_Columns_1
+    description: select a column
     sequence: 2
-    inputDataFrameList:
-      - inputDataFrame: gcp_read_csv_Mansi_1
-        tempViewName: temp
-    query: SELECT *,cast(modified AS date) as modified2 FROM temp;
+    inputDataFrame: Oracle_Data_Set_Existing_1
+    columns:
+      - name
     optional:
       persistDataFrame: false
-    type: operationThroughSqlQuery
+    type: selectColumns
 controlPort:
   dataQualityRules: {}
+outputPort:
+  subscriptionChannels:
+    - channelType: Postgres
+      queryType: SQL
+    - channelType: Dataproduct
+      queryType: SQL\
