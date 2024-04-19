@@ -1,11 +1,11 @@
-version: 0.0.2
+version: 0.0.3
 jobId: "481"
 jobName: Test_19th_march
 jobType: Source Aligned Data Product
 domain: operation
-alias: test_kavish_19_th_1st
+alias: test_kavish_19_th_2nd
 discoveryPort:
-  name: Test_19th_march_1st
+  name: Test_19th_march_2nd
   shortDescription: test 
 inputPorts:
   - alias: gcp_read_csv_Mansi_1
