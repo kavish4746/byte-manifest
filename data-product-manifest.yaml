@@ -5,7 +5,7 @@ jobType: Source Aligned Data Product
 domain: operation
 alias: Write_ice7_19
 discoveryPort:
-  name: Test_iceberg_biglake_SCD1_Mansi7
+  name: Write_ice7_19_1
 inputPorts:
   - alias: gcp_read_csv_Mansi_1
     isDynamic: true
