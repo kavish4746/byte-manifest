@@ -5,7 +5,7 @@ jobType: Source Aligned Data Product
 domain: hr
 alias: load_data_to_oracle_sadp_19_4
 discoveryPort:
-  name: oracle_sadp_19_1
+  name: oracle_sadp_19_4
 inputPorts:
   - alias: Oracle_Data_Set_Existing_4
     isDynamic: true
