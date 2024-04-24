@@ -9,7 +9,7 @@ discoveryPort:
 inputPorts:
   - alias: Test_Consumption_-_miloni_9
     isDynamic: true
-    dataProductUrn: urn:dv:dataproduct:113174e4-1296-4e75-a495-fcd180a9a1be
+    dataProductUrn: urn:dv:dataproduct:1b454d55-c967-42c3-a391-c8ef98212973
     filter: ""
     projection: ""
     optional:
