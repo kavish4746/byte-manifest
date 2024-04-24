@@ -1,23 +1,23 @@
 version: 0.0.6
 jobId: "685"
-jobName: Test consumptions - anokhi test 2 -miloni
+jobName: Mari navi product - Miloni
 jobType: Source Aligned Data Product
 domain: sale
-alias: write_to_iceberg_consumption_2
+alias: write_to_iceberg_consumptions_2
 discoveryPort:
-  name: Test consumptions_anokhi_test_2_miloni
+  name: Mari navi product - Miloni_2
 inputPorts:
-  - alias: Test_Consumption_miloni_1
+  - alias: Test_Consumption_-_miloni_3
     isDynamic: true
-    dataProductUrn: urn:dv:dataset:a449a8da-f182-4741-8bc8-7d336b431d82
     filter: ""
     projection: ""
     optional:
       persistDataFrame: false
+      dataProductUrn: urn:dv:dataproduct:113174e4-1296-4e75-a495-fcd180a9a1be
     type: dataproduct
 productState:
   isDynamic: true
-  alias: write_to_iceberg_consumption_1
+  alias: write_to_iceberg_consumptions_1
   retentionVersions: ""
   logicalSchema:
     properties:
@@ -46,7 +46,7 @@ transformation:
     description: read31
     sequence: 2
     inputDataFrameList:
-      - inputDataFrame: Test_Consumption_miloni_1
+      - inputDataFrame: Test_Consumption_-_miloni_1
         tempViewName: temp
     query: select * from temp
     optional:
