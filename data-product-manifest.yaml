@@ -1,121 +1,36 @@
-version: 0.0.1
-jobId: "665"
-jobName: Weather_ayush
+version: 0.0.6
+jobId: "685"
+jobName: Mari navi product - Miloni
 jobType: Source Aligned Data Product
 domain: sale
-alias: LoadingdataToIceBerg_1
+alias: write_to_iceberg_consumptions_2
 discoveryPort:
-  name: Weather_ayush_1
+  name: Mari navi product - Miloni_2
 inputPorts:
-  - alias: Ayush_S3_dataset_2
+  - alias: Test_Consumption_-_miloni_3
     isDynamic: true
-    path: s3://byte-etl-externaldemo/weather_data/20230626110117.csv
+    dataProductUrn: urn:dv:dataproduct:113174e4-1296-4e75-a495-fcd180a9a1be
+    filter: ""
+    projection: ""
     optional:
       persistDataFrame: false
-      advanceOptions:
-        delimiter: ","
-      enableDataReconciliation: false
-      enforceSchema: false
-      connection: Ayush_S3connection
-      dataSetUrn: urn:dv:dataset:fd08262f-e849-4dec-b56c-9c9aec8cf4bd
-    type: inputDelimited
+    type: dataproduct
 productState:
   isDynamic: true
-  alias: LoadingdataToIceBerg
+  alias: write_to_iceberg_consumptions_1
   retentionVersions: ""
   logicalSchema:
     properties:
-      City:
+      id:
         type: STRING
         description: ""
-      Region:
-        type: STRING
-        description: ""
-      Country:
-        type: STRING
-        description: ""
-      Latitude:
-        type: STRING
-        description: ""
-      Longitude:
-        type: STRING
-        description: ""
-      Timezone:
-        type: STRING
-        description: ""
-      Local Time:
-        type: STRING
-        description: ""
-      Cloud ID:
-        type: STRING
-        description: ""
-      Feels like Celcius:
-        type: STRING
-        description: ""
-      Feels like fahrenheit:
-        type: STRING
-        description: ""
-      Gust speed in kph:
-        type: STRING
-        description: ""
-      Gust speed in mph:
-        type: STRING
-        description: ""
-      Humidity:
-        type: STRING
-        description: ""
-      Is day time?:
-        type: STRING
-        description: ""
-      Last update:
-        type: STRING
-        description: ""
-      Last updated time in epoch:
-        type: STRING
-        description: ""
-      Precipitation in inch:
-        type: STRING
-        description: ""
-      Precipitation in mm:
-        type: STRING
-        description: ""
-      Pressure:
-        type: STRING
-        description: ""
-      Precipitation in mb:
-        type: STRING
-        description: ""
-      Temperature in celcius:
-        type: STRING
-        description: ""
-      Temperature in fahrenheit:
-        type: STRING
-        description: ""
-      UV:
-        type: STRING
-        description: ""
-      Visibility in km:
-        type: STRING
-        description: ""
-      Visibility in miles:
-        type: STRING
-        description: ""
-      Wind Degree:
-        type: STRING
-        description: ""
-      Wind Direction:
-        type: STRING
-        description: ""
-      Wind in kph:
-        type: STRING
-        description: ""
-      Wind in mph:
+      name:
         type: STRING
         description: ""
   stateStoreType: loadDataIceberg
   isProfilingEnabled: false
   updateStrategy: Overwrite
-  tableName: s3source.NewTable
+  tableName: s3Source.sadp_anokhi
   warehousePath: s3://bp-spark-sql-library-test-acc/
   catalogName: glue
   optional:
@@ -128,12 +43,12 @@ productState:
 transformation:
   - isDynamic: true
     alias: Spark_SQL_1
-    description: SelectAll
+    description: read31
     sequence: 2
     inputDataFrameList:
-      - inputDataFrame: Ayush_S3_dataset_1
-        tempViewName: weather
-    query: Select * from weather
+      - inputDataFrame: Test_Consumption_-_miloni_1
+        tempViewName: temp
+    query: select * from temp
     optional:
       persistDataFrame: false
     type: operationThroughSqlQuery
