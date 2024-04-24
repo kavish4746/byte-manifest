@@ -1,13 +1,13 @@
-version: 0.0.20
+version: 0.0.21
 jobId: "587"
 jobName: Oracle DP
 jobType: Source Aligned Data Product
 domain: hr
-alias: load_data_to_oracle_sadp_19_11_1
+alias: load_data_to_oracle_sadp_19_11_2
 discoveryPort:
-  name: oracle_sadp_19_11_1
+  name: oracle_sadp_19_11_2
 inputPorts:
-  - alias: Oracle_Data_Set_Existing_11_1
+  - alias: Oracle_Data_Set_Existing_11_2
     isDynamic: true
     connection: Oracle Data Connection Existing
     tableName/query: byte-etl-test.NEWTABLE
