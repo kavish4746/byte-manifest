@@ -1,74 +1,56 @@
-version: 0.0.3
-jobId: "481"
-jobName: Test_19th_march
+version: 0.0.6
+jobId: "685"
+jobName: Test consumptions - anokhi test 2 -miloni
 jobType: Source Aligned Data Product
-domain: operation
-alias: test_kavish_19_th_2nd
+domain: sale
+alias: write_to_iceberg_consumption_2
 discoveryPort:
-  name: Test_19th_march_2nd
-  shortDescription: test 
+  name: Test consumptions_anokhi_test_2_miloni
 inputPorts:
-  - alias: gcp_read_csv_Mansi_1
+  - alias: Test_Consumption_miloni_1
     isDynamic: true
-    path: gs://dabur_poc_inutdata/scd1_testing_csv/incr_1.csv
+    dataProductUrn: urn:dv:dataproduct:113174e4-1296-4e75-a495-fcd180a9a1be
+    filter: ""
+    projection: ""
     optional:
       persistDataFrame: false
-      advanceOptions:
-        delimiter: ","
-      enableDataReconciliation: false
-      enforceSchema: false
-      connection: mansi_gcp_dummy
-      dataSetUrn: urn:dv:dataset:7dd6d6aa-4f56-4a6a-a558-b227ba5ad7c2
-    type: inputDelimited
+    type: dataproduct
 productState:
-  persistDataFrame: false
-  catalogType: glue
-  enforceSchema: false
-  stepName: test
-  tableName: test
-  warehousePath: test
-  catalogName: test
-  type: readDataIceberg
-  isStateManagement: true
-  sequence: 3
-  alias: test
-  refreshInterval: 5 1 * * *
+  isDynamic: true
+  alias: write_to_iceberg_consumption_1
   retentionVersions: ""
   logicalSchema:
     properties:
-      City:
+      id:
         type: STRING
         description: ""
-      Region:
+      name:
         type: STRING
         description: ""
-      Country:
-        type: STRING
-        description: ""
-      Latitude:
-        type: STRING
-        description: ""
-      Longitude:
-        type: STRING
-        description: ""
-      Timezone:
-        type: STRING
-        description: ""
-      Local Time:
-        type: STRING
-        description: ""
-  enforceSchemaMethod: ""
+  stateStoreType: loadDataIceberg
   isProfilingEnabled: false
+  updateStrategy: Overwrite
+  tableName: s3Source.sadp_anokhi
+  warehousePath: s3://bp-spark-sql-library-test-acc/
+  catalogName: glue
+  optional:
+    persistDataFrame: false
+    enableDataReconciliation: false
+    enforceSchema: false
+    enforceSchemaMethod: Warning
+    catalogType: glue
+  refreshInterval: None
 transformation:
   - isDynamic: true
-    alias: Sagemaker_1
-    description: test
+    alias: Spark_SQL_1
+    description: read31
     sequence: 2
-    pipelineName: ""
+    inputDataFrameList:
+      - inputDataFrame: Test_Consumption_miloni_1
+        tempViewName: temp
+    query: select * from temp
     optional:
       persistDataFrame: false
-    type: customAWSSagemaker
-    inputDataFrame: gcp_read_csv_Mansi_1
+    type: operationThroughSqlQuery
 controlPort:
   dataQualityRules: {}
-timeout: 5
