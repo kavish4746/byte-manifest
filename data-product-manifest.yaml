@@ -19,7 +19,7 @@ inputPorts:
     type: readDeltaTable
   - alias: SMG_SMC_Defect_1
     isDynamic: true
-    dataProductUrn: urn:dv:dataproduct:7b637c8b-d6f8-4959-a84b-ee4235f9cfc5
+    dataProductUrn: urn:dv:dataproduct:d04ac776-da93-40c6-8623-c95abe7b99bd
     filter: ""
     projection: ""
     optional:
