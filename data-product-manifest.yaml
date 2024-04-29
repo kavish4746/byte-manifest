@@ -60,8 +60,6 @@ transformation:
         tempViewName: ReceivingVoucherRequest_1
       - inputDataFrame: Change_Request_1
         tempViewName: Change_Request_1
-      - inputDataFrame: Regulatory_Marking_Checks_Master_1
-        tempViewName: sysmar_picparts_dedup
       - inputDataFrame: QAQD_RPAM_CURATED_1
         tempViewName: QAQD_RPAM_DEDUP
     query: select * from temp
