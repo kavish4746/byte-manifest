@@ -58,6 +58,8 @@ transformation:
         tempViewName: Vendor_Master_1
       - inputDataFrame: ReceivingVoucherRequest_1
         tempViewName: ReceivingVoucherRequest_1
+      - inputDataFrame: Regulatory_Marking_Checks_Master_1
+        tempViewName: sysmar_picparts_dedup
       - inputDataFrame: Change_Request_1
         tempViewName: Change_Request_1
       - inputDataFrame: QAQD_RPAM_CURATED_1
