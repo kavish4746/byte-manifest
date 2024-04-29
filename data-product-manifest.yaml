@@ -3,11 +3,11 @@ jobId: "685"
 jobName: Mari navi product - Miloni
 jobType: Source Aligned Data Product
 domain: sale
-alias: write_to_iceberg_consumptions_14
+alias: write_to_iceberg_consumptions_15
 discoveryPort:
-  name: Mari navi product - Miloni_14
+  name: Mari navi product - Miloni_15
 inputPorts:
-  - alias: Test_Consumption_-_miloni_14
+  - alias: Test_Consumption_-_miloni_15
     isDynamic: true
     dataProductUrn: urn:dv:dataproduct:1b454d55-c967-42c3-a391-c8ef98212973
     filter: ""
@@ -17,7 +17,7 @@ inputPorts:
     type: dataproduct
 productState:
   isDynamic: true
-  alias: write_to_iceberg_consumptions_4
+  alias: write_to_iceberg_consumptions_5
   retentionVersions: ""
   logicalSchema:
     properties:
@@ -58,8 +58,6 @@ transformation:
         tempViewName: Vendor_Master_1
       - inputDataFrame: ReceivingVoucherRequest_1
         tempViewName: ReceivingVoucherRequest_1
-      - inputDataFrame: Regulatory_Marking_Checks_Master_1
-        tempViewName: sysmar_picparts_dedup
       - inputDataFrame: Change_Request_1
         tempViewName: Change_Request_1
       - inputDataFrame: QAQD_RPAM_CURATED_1
