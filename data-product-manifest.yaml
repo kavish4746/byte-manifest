@@ -27,7 +27,7 @@ inputPorts:
     type: dataproduct
   - alias: Parts_Quality_Vehicle_Data_1
     isDynamic: true
-    dataProductUrn: urn:dv:dataproduct:464eaff8-fdd9-420d-8fdc-d5fbf82df239
+    dataProductUrn: urn:dv:dataproduct:d04ac776-da93-40c6-8623-c95abe7b99bd
     filter: ""
     projection: ""
     optional:
@@ -35,7 +35,7 @@ inputPorts:
     type: dataproduct
   - alias: Production_Transaction_Summary_1
     isDynamic: true
-    dataProductUrn: urn:dv:dataproduct:9dccbed0-34a8-41bf-88cf-4f5252351617
+    dataProductUrn: urn:dv:dataproduct:d04ac776-da93-40c6-8623-c95abe7b99bd
     filter: ""
     projection: ""
     optional:
@@ -43,7 +43,7 @@ inputPorts:
     type: dataproduct
   - alias: Change_Request_1
     isDynamic: true
-    dataProductUrn: urn:dv:dataproduct:de862819-55e3-4cc0-99a5-6bb90446b5ae
+    dataProductUrn: urn:dv:dataproduct:d04ac776-da93-40c6-8623-c95abe7b99bd
     filter: ""
     projection: ""
     optional:
@@ -51,7 +51,7 @@ inputPorts:
     type: dataproduct
   - alias: Line_Defects_and_Rejections_1
     isDynamic: true
-    dataProductUrn: urn:dv:dataproduct:4f66313d-9a6a-4755-bd8f-c51e9bf03a22
+    dataProductUrn: urn:dv:dataproduct:d04ac776-da93-40c6-8623-c95abe7b99bd
     filter: ""
     projection: ""
     optional:
@@ -59,7 +59,7 @@ inputPorts:
     type: dataproduct
   - alias: Vendor_Master_2
     isDynamic: true
-    dataProductUrn: urn:dv:dataproduct:376f0480-fc21-4b2f-9963-7071d56cad34
+    dataProductUrn: urn:dv:dataproduct:d04ac776-da93-40c6-8623-c95abe7b99bd
     filter: ""
     projection: ""
     optional:
@@ -67,7 +67,7 @@ inputPorts:
     type: dataproduct
   - alias: ReceivingVoucherRequest_1
     isDynamic: true
-    dataProductUrn: urn:dv:dataproduct:b81ceb19-4e82-4b73-a77f-1adb9fd39d64
+    dataProductUrn: urn:dv:dataproduct:d04ac776-da93-40c6-8623-c95abe7b99bd
     filter: ""
     projection: ""
     optional:
