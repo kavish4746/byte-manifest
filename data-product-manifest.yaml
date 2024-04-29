@@ -15,7 +15,7 @@ inputPorts:
       enableDataReconciliation: false
       enforceSchema: false
       connection: Parts Quality S3 Connectivity - curated
-      dataSetUrn: urn:dv:dataset:7dd6d6aa-4f56-4a6a-a558-b227ba5ad7c2
+      dataSetUrn: urn:dv:dataproduct:d04ac776-da93-40c6-8623-c95abe7b99bd
     type: readDeltaTable
   - alias: SMG_SMC_Defect_1
     isDynamic: true
