@@ -1,66 +1,1013 @@
-version: 0.0.9
-jobId: "394"
-jobName: Test_iceberg_biglake_SCD1_Mansi
-jobType: Source Aligned Data Product
-domain: operation
-alias: Write_ice7_123
+version: 0.1.39
+jobId: "555"
+jobName: Parts Quality Time Based KPIs
+jobType: Aggregated Data Product
+domain: quality_assurance
+alias: Load_PQ_Aggregated_Data_Product
 discoveryPort:
-  name: Test_iceberg_biglake_SCD1_Mansi7_1234
+  name: Parts Quality Time Based KPIs
 inputPorts:
-  - alias: gcp_read_csv_Mansi_1234
+  - alias: QAQD_RPAM_CURATED_1
     isDynamic: true
-    path: gs://dabur_poc_inutdata/scd1_testing_csv/incr_1.csv
+    tableLocation: s3://msil-data-lake-curated/sr2/ppc_de/qaqd_rpam/
     optional:
       persistDataFrame: false
-      advanceOptions:
-        delimiter: ","
       enableDataReconciliation: false
       enforceSchema: false
-      connection: mansi_gcp_dummy
+      connection: Parts Quality S3 Connectivity - curated
       dataSetUrn: urn:dv:dataset:7dd6d6aa-4f56-4a6a-a558-b227ba5ad7c2
-    type: inputDelimited
+    type: readDeltaTable
+  - alias: SMG_SMC_Defect_1
+    isDynamic: true
+    dataProductUrn: urn:dv:dataproduct:7b637c8b-d6f8-4959-a84b-ee4235f9cfc5
+    filter: ""
+    projection: ""
+    optional:
+      persistDataFrame: false
+    type: dataproduct
+  - alias: Parts_Quality_Vehicle_Data_1
+    isDynamic: true
+    dataProductUrn: urn:dv:dataproduct:464eaff8-fdd9-420d-8fdc-d5fbf82df239
+    filter: ""
+    projection: ""
+    optional:
+      persistDataFrame: false
+    type: dataproduct
+  - alias: Production_Transaction_Summary_1
+    isDynamic: true
+    dataProductUrn: urn:dv:dataproduct:9dccbed0-34a8-41bf-88cf-4f5252351617
+    filter: ""
+    projection: ""
+    optional:
+      persistDataFrame: false
+    type: dataproduct
+  - alias: Change_Request_1
+    isDynamic: true
+    dataProductUrn: urn:dv:dataproduct:de862819-55e3-4cc0-99a5-6bb90446b5ae
+    filter: ""
+    projection: ""
+    optional:
+      persistDataFrame: false
+    type: dataproduct
+  - alias: Line_Defects_and_Rejections_1
+    isDynamic: true
+    dataProductUrn: urn:dv:dataproduct:4f66313d-9a6a-4755-bd8f-c51e9bf03a22
+    filter: ""
+    projection: ""
+    optional:
+      persistDataFrame: false
+    type: dataproduct
+  - alias: Vendor_Master_2
+    isDynamic: true
+    dataProductUrn: urn:dv:dataproduct:376f0480-fc21-4b2f-9963-7071d56cad34
+    filter: ""
+    projection: ""
+    optional:
+      persistDataFrame: false
+    type: dataproduct
+  - alias: ReceivingVoucherRequest_1
+    isDynamic: true
+    dataProductUrn: urn:dv:dataproduct:b81ceb19-4e82-4b73-a77f-1adb9fd39d64
+    filter: ""
+    projection: ""
+    optional:
+      persistDataFrame: false
+    type: dataproduct
 productState:
   isDynamic: true
-  alias: Write_ice
+  alias: Load_PQ_Aggregated_Data_Product
   retentionVersions: ""
   logicalSchema:
     properties:
-      city: STRING
+      KPI_Name:
+        type: STRING
+        description: ""
+      DEF_CAT:
+        type: STRING
+        description: ""
+      COUNT_DAY_MINUS_1:
+        type: STRING
+        description: ""
+      COUNT_DAY_MINUS_2:
+        type: STRING
+        description: ""
+      COUNT_CURRENT_MTD:
+        type: STRING
+        description: ""
+      COUNT_PREVIOUS_MTD:
+        type: STRING
+        description: ""
+      COUNT_CURRENT_YTD:
+        type: STRING
+        description: ""
+      COUNT_PREVIOUS_YTD:
+        type: STRING
+        description: ""
+      MONTH1:
+        type: STRING
+        description: ""
+      Count_Plan:
+        type: STRING
+        description: ""
+      Count_Not_Good:
+        type: STRING
+        description: ""
+      Count_Achievement:
+        type: STRING
+        description: ""
+      COUNTED_ON:
+        type: STRING
+        description: ""
+      DMT:
+        type: STRING
+        description: ""
+      PERIOD:
+        type: STRING
+        description: ""
+      TOTAL_COUNT:
+        type: STRING
+        description: ""
+      DISTINCT_COUNT:
+        type: STRING
+        description: ""
+      ALL_TYPES:
+        type: STRING
+        description: ""
+      ALL_VALUES:
+        type: STRING
+        description: ""
+      PLANT:
+        type: STRING
+        description: ""
+      MODEL:
+        type: STRING
+        description: ""
+      DEPT:
+        type: STRING
+        description: ""
+      LOCATION:
+        type: STRING
+        description: ""
+      DEFECT:
+        type: STRING
+        description: ""
+      AUDIT_DATE:
+        type: STRING
+        description: ""
+      YEAR_MONTH:
+        type: STRING
+        description: ""
+      AVG_TOTAL_COUNT:
+        type: STRING
+        description: ""
+      TOTAL_COUNT_LD:
+        type: STRING
+        description: ""
+      calendar_month:
+        type: STRING
+        description: ""
+      monthly_values:
+        type: STRING
+        description: ""
+      vendor_code:
+        type: STRING
+        description: ""
+      VENDOR_NAME:
+        type: STRING
+        description: ""
+      DEF_SCORE:
+        type: STRING
+        description: ""
+      MTD:
+        type: STRING
+        description: ""
+      YTD:
+        type: STRING
+        description: ""
+      CURRENT_QUARTER_DATE:
+        type: STRING
+        description: ""
+      CURRENT_QUARTER:
+        type: STRING
+        description: ""
+      LAST_QUARTER_DATE:
+        type: STRING
+        description: ""
+      LAST_QUARTER:
+        type: STRING
+        description: ""
+      SECOND_LAST_QUARTER_DATE:
+        type: STRING
+        description: ""
+      SECOND_LAST_QUARTER:
+        type: STRING
+        description: ""
+      THIRD_LAST_QUARTER_DATE:
+        type: STRING
+        description: ""
+      THIRD_LAST_QUARTER:
+        type: STRING
+        description: ""
+      LYTD:
+        type: STRING
+        description: ""
+      A:
+        type: STRING
+        description: ""
+      R:
+        type: STRING
+        description: ""
+      F:
+        type: STRING
+        description: ""
+      HU:
+        type: STRING
+        description: ""
+      G:
+        type: STRING
+        description: ""
   stateStoreType: loadDataIceberg
   isProfilingEnabled: false
-  updateStrategy: SCD1
-  tableName: iceberg_db.scd1_data
-  warehousePath: gs://dabur_poc_inutdata/iceberg_warehouse/
-  catalogName: random_catalog
+  updateStrategy: Overwrite
+  tableName: msil_dataverse_quality_assurance_catalog.Parts_Quality_Time_Based_KPIs
+  warehousePath: s3://msil-dataverse-quality-assurance/
+  catalogName: glue
   optional:
     persistDataFrame: false
     enableDataReconciliation: false
     enforceSchema: false
     enforceSchemaMethod: Warning
-    catalogType: biglake
-    changeTrackingColumns:
-      - value
-    timestampColumn: modified2
-    primaryKey:
-      - id
-  refreshInterval: 0 10 31 2 1
+    catalogType: glue
+    loggingOptions:
+      printSchema: true
+  refreshInterval: None
 transformation:
   - isDynamic: true
     alias: Spark_SQL_1
-    description: str_to_date
-    sequence: 2
+    description: Transform ADP
+    sequence: 9
     inputDataFrameList:
-      - inputDataFrame: gcp_read_csv_Mansi_1
-        tempViewName: temp
-    query: SELECT *,cast(modified AS date) as modified2 FROM temp;
+      - inputDataFrame: Line_Defects_and_Rejections_1
+        tempViewName: Line_Defects_and_Rejections_1
+      - inputDataFrame: SMG_SMC_Defect_1
+        tempViewName: SMG_SMC_Defect_1
+      - inputDataFrame: Parts_Quality_Vehicle_Data_1
+        tempViewName: Parts_Quality_Vehicle_Data
+      - inputDataFrame: Production_Transaction_Summary_1
+        tempViewName: Production_Transaction_Summary_1
+      - inputDataFrame: Vendor_Master_2
+        tempViewName: Vendor_Master_1
+      - inputDataFrame: ReceivingVoucherRequest_1
+        tempViewName: ReceivingVoucherRequest_1
+      - inputDataFrame: Change_Request_1
+        tempViewName: Change_Request_1
+      - inputDataFrame: QAQD_RPAM_CURATED_1
+        tempViewName: QAQD_RPAM_DEDUP
+    query: ( with LINE_DEFECT as (
+      select  DEF_CAT,  DT_OF_PUNCHING,  COUNT(CONTROL_NO) as CTRL_COUNT
+      from  Line_Defects_and_Rejections_1 group by  DEF_CAT,  DT_OF_PUNCHING
+      order by  DT_OF_PUNCHING desc ), calender_month as(
+      select  concat(substring(DT_OF_PUNCHING,  1,  7),  '-01') as
+      DT_OF_PUNCHING,  sum(CTRL_COUNT) as monthly_value from  LINE_DEFECT group
+      by  concat(substring(DT_OF_PUNCHING,  1,  7),  '-01') ), COUNT_DAY_MINUS_1
+      as( select  DEF_CAT,  SUM(CTRL_COUNT) as COUNT_DAY_MINUS_1
+      from  LINE_DEFECT where  DT_OF_PUNCHING = date_trunc('day',  (CURRENT_DATE
+      - 1)) group by  DEF_CAT ), COUNT_DAY_MINUS_2 as(
+      select  DEF_CAT,  SUM(CTRL_COUNT) as COUNT_DAY_MINUS_2 from  LINE_DEFECT
+      where  DT_OF_PUNCHING = date_trunc('day',  (CURRENT_DATE - 2)) group
+      by  DEF_CAT ), COUNT_CURRENT_MTD as( select  DEF_CAT,  SUM(CTRL_COUNT) as
+      COUNT_CURRENT_MTD from  LINE_DEFECT where  DT_OF_PUNCHING between
+      date_trunc('month',  DATEADD(day,  -1,  CURRENT_DATE)) and
+      date_trunc('day',  (CURRENT_DATE - 1)) group by  DEF_CAT ),
+      COUNT_PREVIOUS_MTD as( select  DEF_CAT,  SUM(CTRL_COUNT) as
+      COUNT_PREVIOUS_MTD from  LINE_DEFECT where  DT_OF_PUNCHING between
+      date_trunc('MONTH',  date_sub(current_date,  day(current_date))) and
+      date_trunc( 'day',  (current_date - interval '1' day) - interval '1' month
+      ) group by  DEF_CAT ), COUNT_CURRENT_YTD as(
+      select  DEF_CAT,  SUM(CTRL_COUNT) as COUNT_CURRENT_YTD
+      from  (  select   *,   case    when month(current_date-1) >= 4 then
+      TO_DATE(CONCAT(year(current_date),    '-04-01'),    'yyyy-MM-dd')    else
+      TO_DATE( CONCAT(year(current_date) - 1,    '-04-01'),    'yyyy-MM-dd'
+      )   end as New_date  from   LINE_DEFECT) where  DT_OF_PUNCHING between
+      New_date and date_trunc('day',  (CURRENT_DATE - 1)) group by  DEF_CAT ),
+      COUNT_PREVIOUS_YTD as( select  DEF_CAT,  SUM(CTRL_COUNT) as
+      COUNT_PREVIOUS_YTD from  (  select   *,   case    when
+      month(current_date-1) >= 4 then TO_DATE( CONCAT(year(current_date) -
+      1,    '-04-01'),    'yyyy-MM-dd' )    else TO_DATE(
+      CONCAT(year(current_date) - 2,    '-04-01'),    'yyyy-MM-dd' )   end as
+      New_date  from   LINE_DEFECT) where  DT_OF_PUNCHING between New_date and
+      date_trunc ( 'day',  (current_date - interval '1' day) - interval '12'
+      month) group by  DEF_CAT ), DEF_CATEGORIES as ( select  distinct DEF_CAT
+      from  Line_Defects_and_Rejections_1 where  DEF_CAT <> ''  and
+      LINE_DEFECT_FLAG = 1 union select  'R' ) (
+      select  'Line_Defect_Category_Count' as
+      KPI_Name,  DC.DEF_CAT,  cast(NVL(COUNT_DAY_MINUS_1, 0) as
+      decimal(35,  10)) as COUNT_DAY_MINUS_1,  cast(NVL(COUNT_DAY_MINUS_2, 0) as
+      decimal(35,  10)) as COUNT_DAY_MINUS_2,  cast(NVL(COUNT_CURRENT_MTD, 0) as
+      decimal(35,  10)) as COUNT_CURRENT_MTD,  cast(NVL(COUNT_PREVIOUS_MTD, 0)
+      as decimal(35,  10)) as COUNT_PREVIOUS_MTD,  cast(NVL(COUNT_CURRENT_YTD,
+      0) as decimal(35,  10)) as
+      COUNT_CURRENT_YTD,  cast(NVL(COUNT_PREVIOUS_YTD, 0) as decimal(35,  10))
+      as COUNT_PREVIOUS_YTD,  '' as MONTH1,  cast('' as decimal(35,  10)) as
+      Count_Plan,  cast('' as decimal(35,  10)) as Count_Not_Good,  cast('' as
+      decimal(35,  10)) as Count_Achievement,  '' as COUNTED_ON,  '' as DMT,  ''
+      as period,  cast('' as decimal(35,  10)) as TOTAL_COUNT,  '' as
+      DISTINCT_COUNT,  '' as ALL_TYPES,  '' as ALL_VALUES,  '' as PLANT,  '' as
+      model,  '' as DEPT,  '' as location,  '' as DEFECT,  '' as AUDIT_DATE,  ''
+      as YEAR_MONTH,  cast('' as decimal(35,  10)) as AVG_TOTAL_COUNT,  cast(''
+      as decimal(35,  10)) as TOTAL_COUNT_LD,  '' as calendar_month,  '' as
+      monthly_values,  '' as vendor_code,  '' as VENDOR_NAME,  cast('' as
+      decimal(35,  10)) as DEF_SCORE,  cast('' as decimal(35,  10)) as
+      MTD,  cast('' as decimal(35,  10)) as YTD,  '' as
+      CURRENT_QUARTER_DATE,  cast('' as decimal(35,  10)) as
+      CURRENT_QUARTER,  '' as LAST_QUARTER_DATE,  cast('' as decimal(35,  10))
+      as LAST_QUARTER,  '' as SECOND_LAST_QUARTER_DATE,  cast('' as
+      decimal(35,  10)) as SECOND_LAST_QUARTER,  '' as
+      THIRD_LAST_QUARTER_DATE,  cast('' as decimal(35,  10)) as
+      THIRD_LAST_QUARTER,  '' as LYTD,  '' as A,  '' as R,  '' as F,  '' as
+      HU,  '' as G from  DEF_CATEGORIES DC left outer join COUNT_DAY_MINUS_1 C1
+      on  DC.DEF_CAT = C1.DEF_CAT left outer join COUNT_DAY_MINUS_2 C2
+      on  DC.DEF_CAT = C2.DEF_CAT left outer join COUNT_CURRENT_MTD CCM
+      on  DC.DEF_CAT = CCM.DEF_CAT left outer join COUNT_PREVIOUS_MTD CPM
+      on  DC.DEF_CAT = CPM.DEF_CAT left outer join COUNT_CURRENT_YTD CCY
+      on  DC.DEF_CAT = CCY.DEF_CAT left outer join COUNT_PREVIOUS_YTD CPY
+      on  DC.DEF_CAT = CPY.DEF_CAT union all
+      select  'Line_Defect_Category_Count' as KPI_Name,  '' as DEF_CAT,  cast(''
+      as decimal(35,  10)) as COUNT_DAY_MINUS_1,  cast('' as decimal(35,  10))
+      as COUNT_DAY_MINUS_2,  cast('' as decimal(35,  10)) as
+      COUNT_CURRENT_MTD,  cast('' as decimal(35,  10)) as
+      COUNT_PREVIOUS_MTD,  cast('' as decimal(35,  10)) as
+      COUNT_CURRENT_YTD,  cast('' as decimal(35,  10)) as
+      COUNT_PREVIOUS_YTD,  '' as MONTH1,  cast('' as decimal(35,  10)) as
+      Count_Plan,  cast('' as decimal(35,  10)) as Count_Not_Good,  cast('' as
+      decimal(35,  10)) as Count_Achievement,  '' as COUNTED_ON,  '' as DMT,  ''
+      as period,  cast('' as decimal(35,  10)) as TOTAL_COUNT,  '' as
+      DISTINCT_COUNT,  '' as ALL_TYPES,  '' as ALL_VALUES,  '' as PLANT,  '' as
+      model,  '' as DEPT,  '' as location,  '' as DEFECT,  '' as AUDIT_DATE,  ''
+      as YEAR_MONTH,  cast('' as decimal(35,  10)) as AVG_TOTAL_COUNT,  cast(''
+      as decimal(35,  10)) as TOTAL_COUNT_LD,  DT_OF_PUNCHING as
+      calendar_month,  monthly_value as monthly_values,  '' as vendor_code,  ''
+      as VENDOR_NAME,  cast('' as decimal(35,  10)) as DEF_SCORE,  cast('' as
+      decimal(35,  10)) as MTD,  cast('' as decimal(35,  10)) as YTD,  '' as
+      CURRENT_QUARTER_DATE,  cast('' as decimal(35,  10)) as
+      CURRENT_QUARTER,  '' as LAST_QUARTER_DATE,  cast('' as decimal(35,  10))
+      as LAST_QUARTER,  '' as SECOND_LAST_QUARTER_DATE,  cast('' as
+      decimal(35,  10)) as SECOND_LAST_QUARTER,  '' as
+      THIRD_LAST_QUARTER_DATE,  cast('' as decimal(35,  10)) as
+      THIRD_LAST_QUARTER,  '' as LYTD,  '' as A,  '' as R,  '' as F,  '' as
+      HU,  '' as G from  calender_month ) ) union ( select 'PDAY' as KPI_Name,
+      '' as DEF_CAT, cast('' as decimal(35, 10)) as COUNT_DAY_MINUS_1, cast(''
+      as decimal(35, 10)) as COUNT_DAY_MINUS_2, cast('' as decimal(35, 10)) as
+      COUNT_CURRENT_MTD, cast('' as decimal(35, 10)) as COUNT_PREVIOUS_MTD,
+      cast('' as decimal(35, 10)) as COUNT_CURRENT_YTD, cast('' as decimal(35,
+      10)) as COUNT_PREVIOUS_YTD, '' as MONTH1, cast('' as decimal(35, 10)) as
+      Count_Plan, cast('' as decimal(35, 10)) as Count_Not_Good, cast('' as
+      decimal(35, 10)) as Count_Achievement, '' as COUNTED_ON, '' as DMT, '' as
+      period, cast(TOTAL_COUNT as decimal(35, 10)) as TOTAL_COUNT, '' as
+      DISTINCT_COUNT, '' as ALL_TYPES, '' as ALL_VALUES, '' as PLANT, '' as
+      model, '' as DEPT, '' as location, '' as DEFECT, '' as AUDIT_DATE,
+      MONTH_YEAR as MONTH_YEAR, cast(AVG_TOTAL_COUNT as decimal(35, 10)) as
+      AVG_TOTAL_COUNT, cast(coalesce(TOTAL_COUNT_LD, 0) as decimal(35, 10)) as
+      TOTAL_COUNT_LD, concat(substring(MONTH_YEAR, 1, 7), '-01') as
+      calendar_month, '' as monthly_values, '' as vendor_code, '' as
+      VENDOR_NAME, cast('' as decimal(35, 10)) as DEF_SCORE, cast('' as
+      decimal(35, 10)) as MTD, cast('' as decimal(35, 10)) as YTD, '' as
+      CURRENT_QUARTER_DATE, cast('' as decimal(35, 10)) as CURRENT_QUARTER, ''
+      as LAST_QUARTER_DATE, cast('' as decimal(35, 10)) as LAST_QUARTER, '' as
+      SECOND_LAST_QUARTER_DATE, cast('' as decimal(35, 10)) as
+      SECOND_LAST_QUARTER, '' as THIRD_LAST_QUARTER_DATE, cast('' as decimal(35,
+      10)) as THIRD_LAST_QUARTER, '' as LYTD, '' as A, '' as R, '' as F, '' as
+      HU, '' as G from ( select  *,  ROUND(TOTAL_COUNT / FY_MONTH1,  2) as
+      AVG_TOTAL_COUNT from  (  select   *,   case    when MONTH1 < 4 then MONTH1
+      + 9    else MONTH1 - 3   end as
+      FY_MONTH1  from   (   select    PDAY_DATE,    DATE_TRUNC('month',    PDAY_DATE)
+      as MONTH_YEAR,    cast(month(PDAY_DATE) as INT) as
+      MONTH1,    SUM(NVL(PDAY_QUANTITY_A, 0) + NVL(PDAY_QUANTITY_B, 0)) as
+      TOTAL_COUNT   from    Production_Transaction_Summary_1   where    PDAY_CTRLPT_NUMBER
+      in ( '1A3500', '1A4500', '1A5500', '1AB500', '2A1500', '3A1500', '6A1500',
+      '7A1500', '8A1500' )   group
+      by    PDAY_DATE,    DATE_TRUNC('month',    PDAY_DATE),    cast(month(PDAY_DATE)
+      as INT) ) ) ) SP left outer join (
+      select  DATE_TRUNC('month',  DT_OF_PUNCHING) as
+      LD_MONTH_YEAR,  coalesce(COUNT(*),  0) as TOTAL_COUNT_LD
+      from  Line_Defects_and_Rejections_1 group by  LD_MONTH_YEAR ) LD on
+      SP.MONTH_YEAR = LD.LD_MONTH_YEAR order by SP.MONTH_YEAR desc ) union (
+      with QHOLD_DATA as ( select Flag_Date as FLAGDATE1, COUNT(distinct
+      Hold_Code) as HOLD_COUNT, COUNT(*) as TOTAL_COUNT from
+      Parts_Quality_Vehicle_Data VLD group by Flag_Date ), calender_month as(
+      select concat(substring(FLAGDATE1, 1, 7), '-01') as calendar_month,
+      sum(TOTAL_COUNT) as monthly_values from QHOLD_DATA group by
+      concat(substring(FLAGDATE1, 1, 7), '-01') ), COUNT_DAY_MINUS_1 as( select
+      SUM(HOLD_COUNT) as COUNT_DAY_MINUS_1, SUM(TOTAL_COUNT) as
+      TOTALCOUNT_DAY_MINUS_1 from QHOLD_DATA where FLAGDATE1 = date_trunc('day',
+      (CURRENT_DATE - 1)) ), COUNT_DAY_MINUS_2 as( select SUM(HOLD_COUNT) as
+      COUNT_DAY_MINUS_2, SUM(TOTAL_COUNT) as TOTALCOUNT_DAY_MINUS_2 from
+      QHOLD_DATA where FLAGDATE1 = date_trunc('day', (CURRENT_DATE - 2)) ),
+      COUNT_CURRENT_MTD as( select SUM(HOLD_COUNT) as COUNT_CURRENT_MTD,
+      SUM(TOTAL_COUNT) as TOTALCOUNT_CURRENT_MTD from QHOLD_DATA where FLAGDATE1
+      between date_trunc('month', DATEADD(day, -1, CURRENT_DATE)) and
+      date_trunc('day', (CURRENT_DATE - 1)) ), COUNT_PREVIOUS_MTD as( select
+      SUM(HOLD_COUNT) as COUNT_PREVIOUS_MTD, SUM(TOTAL_COUNT) as
+      TOTALCOUNT_PREVIOUS_MTD from QHOLD_DATA where FLAGDATE1 between
+      date_trunc('MONTH', date_sub(current_date, day(current_date))) and
+      date_sub(date_trunc('MONTH', current_date), 1) ), COUNT_CURRENT_YTD as(
+      select SUM(HOLD_COUNT) as COUNT_CURRENT_YTD, SUM(TOTAL_COUNT) as
+      TOTALCOUNT_CURRENT_YTD from QHOLD_DATA where FLAGDATE1 between
+      add_months(date_trunc('YEAR', current_date), 3) and date_trunc('day',
+      (CURRENT_DATE - 1)) ), COUNT_PREVIOUS_YTD as( select SUM(HOLD_COUNT) as
+      COUNT_PREVIOUS_YTD, SUM(TOTAL_COUNT) as TOTALCOUNT_PREVIOUS_YTD from
+      QHOLD_DATA where FLAGDATE1 between add_months( date_trunc('YEAR',
+      make_date(year(current_date) - 1, 1, 1)), 3 ) and
+      date_sub(date_trunc('YEAR', current_date), 1) ) ( ( select
+      'PDI_Hold_Count' as KPI_Name, '' as DEF_CAT, cast(NVL(COUNT_DAY_MINUS_1,
+      0) as decimal(35, 10)) as COUNT_DAY_MINUS_1, cast(NVL(COUNT_DAY_MINUS_2,
+      0) as decimal(35, 10)) as COUNT_DAY_MINUS_2, cast(NVL(COUNT_CURRENT_MTD,
+      0) as decimal(35, 10)) as COUNT_CURRENT_MTD, cast(NVL(COUNT_PREVIOUS_MTD,
+      0) as decimal(35, 10)) as COUNT_PREVIOUS_MTD, cast(NVL(COUNT_CURRENT_YTD,
+      0) as decimal(35, 10)) as COUNT_CURRENT_YTD, cast(NVL(COUNT_PREVIOUS_YTD,
+      0) as decimal(35, 10)) as COUNT_PREVIOUS_YTD, '' as MONTH1, cast('' as
+      decimal(35, 10)) as Count_Plan, cast('' as decimal(35, 10)) as
+      Count_Not_Good, cast('' as decimal(35, 10)) as Count_Achievement,
+      COUNTED_ON, '' as DMT, '' as period, cast('' as decimal(35, 10)) as
+      TOTAL_COUNT, '' as DISTINCT_COUNT, '' as ALL_TYPES, '' as ALL_VALUES, ''
+      as PLANT, '' as model, '' as DEPT, '' as location, '' as DEFECT, '' as
+      AUDIT_DATE, '' as YEAR_MONTH, cast('' as decimal(35, 10)) as
+      AVG_TOTAL_COUNT, cast('' as decimal(35, 10)) as TOTAL_COUNT_LD, '' as
+      calendar_month, '' as monthly_values, '' as vendor_code, '' as
+      VENDOR_NAME, cast('' as decimal(35, 10)) as DEF_SCORE, cast('' as
+      decimal(35, 10)) as MTD, cast('' as decimal(35, 10)) as YTD, '' as
+      CURRENT_QUARTER_DATE, cast('' as decimal(35, 10)) as CURRENT_QUARTER, ''
+      as LAST_QUARTER_DATE, cast('' as decimal(35, 10)) as LAST_QUARTER, '' as
+      SECOND_LAST_QUARTER_DATE, cast('' as decimal(35, 10)) as
+      SECOND_LAST_QUARTER, '' as THIRD_LAST_QUARTER_DATE, cast('' as decimal(35,
+      10)) as THIRD_LAST_QUARTER, '' as LYTD, '' as A, '' as R, '' as F, '' as
+      HU, '' as G from ( select 'DISTINCT' as COUNTED_ON, NVL(COUNT_DAY_MINUS_1,
+      0) as COUNT_DAY_MINUS_1, NVL(COUNT_DAY_MINUS_2, 0) as COUNT_DAY_MINUS_2,
+      NVL(COUNT_CURRENT_MTD, 0) as COUNT_CURRENT_MTD, NVL(COUNT_PREVIOUS_MTD, 0)
+      as COUNT_PREVIOUS_MTD, NVL(COUNT_CURRENT_YTD, 0) as COUNT_CURRENT_YTD,
+      NVL(COUNT_PREVIOUS_YTD, 0) as COUNT_PREVIOUS_YTD, calendar_month from
+      COUNT_DAY_MINUS_1 C1, COUNT_DAY_MINUS_2 C2, COUNT_CURRENT_MTD CCM,
+      COUNT_PREVIOUS_MTD CPM, COUNT_CURRENT_YTD CCY, COUNT_PREVIOUS_YTD CPY,
+      calender_month union select 'TOTAL' as COUNTED_ON,
+      NVL(TOTALCOUNT_DAY_MINUS_1, 0) as COUNT_DAY_MINUS_1,
+      NVL(TOTALCOUNT_DAY_MINUS_2, 0) as COUNT_DAY_MINUS_2,
+      NVL(TOTALCOUNT_CURRENT_MTD, 0) as COUNT_CURRENT_MTD,
+      NVL(TOTALCOUNT_PREVIOUS_MTD, 0) as COUNT_PREVIOUS_MTD,
+      NVL(TOTALCOUNT_CURRENT_YTD, 0) as COUNT_CURRENT_YTD,
+      NVL(TOTALCOUNT_PREVIOUS_YTD, 0) as COUNT_PREVIOUS_YTD, calendar_month from
+      COUNT_DAY_MINUS_1 C1, COUNT_DAY_MINUS_2 C2, COUNT_CURRENT_MTD CCM,
+      COUNT_PREVIOUS_MTD CPM, COUNT_CURRENT_YTD CCY, COUNT_PREVIOUS_YTD CPY,
+      calender_month ) ) union all ( select 'PDI_Hold_Count' as KPI_Name, '' as
+      DEF_CAT, cast('' as decimal(35, 10)) as COUNT_DAY_MINUS_1, cast('' as
+      decimal(35, 10)) as COUNT_DAY_MINUS_2, cast('' as decimal(35, 10)) as
+      COUNT_CURRENT_MTD, cast('' as decimal(35, 10)) as COUNT_PREVIOUS_MTD,
+      cast('' as decimal(35, 10)) as COUNT_CURRENT_YTD, cast('' as decimal(35,
+      10)) as COUNT_PREVIOUS_YTD, '' as MONTH1, cast('' as decimal(35, 10)) as
+      Count_Plan, cast('' as decimal(35, 10)) as Count_Not_Good, cast('' as
+      decimal(35, 10)) as Count_Achievement, '' as COUNTED_ON, '' as DMT, '' as
+      period, cast('' as decimal(35, 10)) as TOTAL_COUNT, '' as DISTINCT_COUNT,
+      '' as ALL_TYPES, '' as ALL_VALUES, '' as PLANT, '' as model, '' as DEPT,
+      '' as location, '' as DEFECT, '' as AUDIT_DATE, '' as YEAR_MONTH, cast(''
+      as decimal(35, 10)) as AVG_TOTAL_COUNT, cast('' as decimal(35, 10)) as
+      TOTAL_COUNT_LD, calendar_month as calendar_month, monthly_values as
+      monthly_values, '' as vendor_code, '' as VENDOR_NAME, cast('' as
+      decimal(35, 10)) as DEF_SCORE, cast('' as decimal(35, 10)) as MTD, cast(''
+      as decimal(35, 10)) as YTD, '' as CURRENT_QUARTER_DATE, cast('' as
+      decimal(35, 10)) as CURRENT_QUARTER, '' as LAST_QUARTER_DATE, cast('' as
+      decimal(35, 10)) as LAST_QUARTER, '' as SECOND_LAST_QUARTER_DATE, cast(''
+      as decimal(35, 10)) as SECOND_LAST_QUARTER, '' as THIRD_LAST_QUARTER_DATE,
+      cast('' as decimal(35, 10)) as THIRD_LAST_QUARTER, '' as LYTD, '' as A, ''
+      as R, '' as F, '' as HU, '' as G from calender_month ) ) ) union ( select
+      'PDI_Hold_Summary_Count' as KPI_Name, '' as DEF_CAT, cast('' as
+      decimal(35, 10)) as COUNT_DAY_MINUS_1, cast('' as decimal(35, 10)) as
+      COUNT_DAY_MINUS_2, cast('' as decimal(35, 10)) as COUNT_CURRENT_MTD,
+      cast('' as decimal(35, 10)) as COUNT_PREVIOUS_MTD, cast('' as decimal(35,
+      10)) as COUNT_CURRENT_YTD, cast('' as decimal(35, 10)) as
+      COUNT_PREVIOUS_YTD, '' as MONTH1, cast('' as decimal(35, 10)) as
+      Count_Plan, cast('' as decimal(35, 10)) as Count_Not_Good, cast('' as
+      decimal(35, 10)) as Count_Achievement, '' as COUNTED_ON, '' as DMT,
+      Z.PERIOD, cast(Z.TOTAL_COUNT as decimal(35, 10)) as TOTAL_COUNT,
+      Z.DISTINCT_COUNT, '' as ALL_TYPES, '' as ALL_VALUES, '' as PLANT, '' as
+      model, '' as DEPT, '' as location, '' as DEFECT, '' as AUDIT_DATE, '' as
+      YEAR_MONTH, cast('' as decimal(35, 10)) as AVG_TOTAL_COUNT, cast('' as
+      decimal(35, 10)) as TOTAL_COUNT_LD, concat(substring(Z.Flag_Date, 1, 7),
+      '-01') as calendar_month, '' as monthly_values, '' as vendor_code, '' as
+      VENDOR_NAME, cast('' as decimal(35, 10)) as DEF_SCORE, cast('' as
+      decimal(35, 10)) as MTD, cast('' as decimal(35, 10)) as YTD, '' as
+      CURRENT_QUARTER_DATE, cast('' as decimal(35, 10)) as CURRENT_QUARTER, ''
+      as LAST_QUARTER_DATE, cast('' as decimal(35, 10)) as LAST_QUARTER, '' as
+      SECOND_LAST_QUARTER_DATE, cast('' as decimal(35, 10)) as
+      SECOND_LAST_QUARTER, '' as THIRD_LAST_QUARTER_DATE, cast('' as decimal(35,
+      10)) as THIRD_LAST_QUARTER, '' as LYTD, '' as A, '' as R, '' as F, '' as
+      HU, '' as G from ( select CONCAT( date_format(Flag_Date, 'yy'), '-',
+      date_format(Flag_Date, 'MM') ) as period, COUNT(Hold_Code) as TOTAL_COUNT,
+      COUNT(distinct Hold_Code) as DISTINCT_COUNT, Flag_Date from
+      Parts_Quality_Vehicle_Data where Flag_Date between
+      add_months(date_trunc('YEAR', current_date), 3) and date_trunc('day',
+      (CURRENT_DATE - 1)) group by period, Flag_Date union select CONCAT(
+      date_format(current_date(), 'yy') - 1, '-', date_format(current_date(),
+      'yy') ) as period, COUNT(Hold_Code) as TOTAL_COUNT, COUNT(distinct
+      Hold_Code) as DISTINCT_COUNT, Flag_Date from Parts_Quality_Vehicle_Data
+      where Flag_Date between date_trunc( 'MONTH', date_add( date_trunc('YEAR',
+      date_add(current_date(), -365)), 3 ) ) and date_trunc( 'MONTH',
+      date_add(date_trunc('YEAR', date_add(current_date(), -1)), 3) ) group by
+      period, Flag_Date union select CONCAT( date_format(current_date(), 'yy') -
+      2, '-', date_format(current_date(), 'yy') - 1 ) as period,
+      COUNT(Hold_Code) as TOTAL_COUNT, COUNT(distinct Hold_Code) as
+      DISTINCT_COUNT, Flag_Date from Parts_Quality_Vehicle_Data where Flag_Date
+      between date_trunc( 'MONTH', date_add( date_trunc('YEAR',
+      date_add(current_date(), -730)), 3 ) ) and date_trunc( 'MONTH', date_add(
+      date_trunc('YEAR', date_add(current_date(), -365)), 3 ) ) group by period,
+      Flag_Date order by period desc ) Z ) union ( with LINE_DEFECT as ( select
+      * from Line_Defects_and_Rejections_1 ), LINE_DEFECT_VEND as ( select
+      CC.vendor_code, CC.VENDOR_NAME, CC.A as A, CC.R as R, CC.F as F, CC.HU as
+      HU, CC.G as G, ((CC.A * 5) + (CC.R * 5) + (CC.F * 3) + (CC.HU * 5) + (CC.G
+      * 1)) as DEF_SCORE, MTD.MTD_value as MTD, YTD.YTD_value as YTD,
+      LYTD.LYTD_value as LYTD, concat( DATE_FORMAT(current_date, 'yyyy'), '-',
+      quarter(date_sub(current_date, 3)) ) as CURRENT_QUARTER_DATE,
+      CURRENT_QUARTER.CURRENT_QUARTER_value as CURRENT_QUARTER, concat(
+      DATE_FORMAT(current_date, 'yyyy'), '-', quarter(date_sub(current_date, 6))
+      ) as LAST_QUARTER_DATE, LAST_QUARTER.LAST_QUARTER_value as LAST_QUARTER,
+      concat( DATE_FORMAT(current_date, 'yyyy'), '-',
+      quarter(date_sub(current_date, 9)) ) as SECOND_LAST_QUARTER_DATE,
+      SECOND_LAST_QUARTER.SECOND_LAST_QUARTER_Value as SECOND_LAST_QUARTER,
+      concat( DATE_FORMAT(current_date, 'yyyy'), '-',
+      quarter(date_sub(current_date, 12)) ) as THIRD_LAST_QUARTER_DATE,
+      THIRD_LAST_QUARTER.THIRD_LAST_QUARTER_Value as THIRD_LAST_QUARTER from (
+      select Line_Defects_and_Rejections_1.vendor_code, VM.vendor_name, SUM(
+      case when def_cat = 'G' then 1 else 0 end ) as G, SUM( case when def_cat =
+      'R' then 1 else 0 end ) as R, SUM( case when def_cat = 'F' then 1 else 0
+      end ) as F, SUM( case when def_cat = 'A' then 1 else 0 end ) as A, SUM(
+      case when def_cat = 'HU' then 1 else 0 end ) as HU from
+      Line_Defects_and_Rejections_1 left outer join Vendor_Master_1 VM on
+      Line_Defects_and_Rejections_1.vendor_code = VM.CHILD_VENDOR where
+      VM.CHILD_VENDOR is not null group by
+      Line_Defects_and_Rejections_1.vendor_code, VM.vendor_name order by
+      vendor_code ) CC left join ( select COUNT(*) as MTD_value, vendor_code
+      from Line_Defects_and_Rejections_1 where dt_of_punching between
+      date_trunc('month', DATEADD(day, -1, CURRENT_DATE)) and date_trunc('day',
+      (CURRENT_DATE - 1)) and LINE_DEFECT_FLAG = 1 group by vendor_code ) MTD on
+      MTD.vendor_code = CC.vendor_code left join ( select COUNT(*) as YTD_value,
+      vendor_code from Line_Defects_and_Rejections_1 where dt_of_punching
+      between add_months(date_trunc('YEAR', current_date), 3) and
+      date_trunc('day', (CURRENT_DATE - 1)) and LINE_DEFECT_FLAG = 1 group by
+      vendor_code ) YTD on YTD.vendor_code = CC.vendor_code left join ( select
+      COUNT(*) as LYTD_value, vendor_code from Line_Defects_and_Rejections_1
+      where dt_of_punching between add_months( date_trunc('YEAR',
+      make_date(year(current_date) - 1, 1, 1)), 3 ) and
+      date_sub(date_trunc('YEAR', current_date), 1) and LINE_DEFECT_FLAG = 1
+      group by vendor_code ) LYTD on LYTD.vendor_code = CC.vendor_code left join
+      ( select COUNT(*) as CURRENT_QUARTER_value, vendor_code from
+      Line_Defects_and_Rejections_1 where concat( DATE_FORMAT(dt_of_punching,
+      'yyyy'), '-', quarter(date_sub(dt_of_punching, 3)) ) = concat(
+      DATE_FORMAT(current_date, 'yyyy'), '-', quarter(date_sub(current_date, 3))
+      ) and LINE_DEFECT_FLAG = 1 group by vendor_code ) CURRENT_QUARTER on
+      CURRENT_QUARTER.vendor_code = CC.vendor_code left join ( select COUNT(*)
+      as LAST_QUARTER_value, vendor_code from Line_Defects_and_Rejections_1
+      where concat( DATE_FORMAT(dt_of_punching, 'yyyy'), '-',
+      quarter(date_sub(dt_of_punching, 3)) ) = concat( DATE_FORMAT(current_date,
+      'yyyy'), '-', quarter(date_sub(current_date, 6)) ) and LINE_DEFECT_FLAG =
+      1 group by vendor_code ) LAST_QUARTER on LAST_QUARTER.vendor_code =
+      CC.vendor_code left join ( select COUNT(*) as SECOND_LAST_QUARTER_Value,
+      vendor_code from Line_Defects_and_Rejections_1 where concat(
+      DATE_FORMAT(dt_of_punching, 'yyyy'), '-', quarter(date_sub(dt_of_punching,
+      3)) ) = concat( DATE_FORMAT(current_date, 'yyyy'), '-',
+      quarter(date_sub(current_date, 9)) ) and LINE_DEFECT_FLAG = 1 group by
+      vendor_code ) SECOND_LAST_QUARTER on SECOND_LAST_QUARTER.vendor_code =
+      CC.vendor_code left join ( select COUNT(*) as THIRD_LAST_QUARTER_Value,
+      vendor_code from Line_Defects_and_Rejections_1 where concat(
+      DATE_FORMAT(dt_of_punching, 'yyyy'), '-', quarter(date_sub(dt_of_punching,
+      3)) ) = concat( DATE_FORMAT(current_date, 'yyyy'), '-',
+      quarter(date_sub(current_date, 12)) ) and LINE_DEFECT_FLAG = 1 group by
+      vendor_code ) THIRD_LAST_QUARTER on THIRD_LAST_QUARTER.vendor_code =
+      CC.vendor_code ) ( select 'Line_Defect_Vendor_Count' as KPI_Name, '' as
+      DEF_CAT, cast('' as decimal(35, 10)) as COUNT_DAY_MINUS_1, cast('' as
+      decimal(35, 10)) as COUNT_DAY_MINUS_2, cast('' as decimal(35, 10)) as
+      COUNT_CURRENT_MTD, cast('' as decimal(35, 10)) as COUNT_PREVIOUS_MTD,
+      cast('' as decimal(35, 10)) as COUNT_CURRENT_YTD, cast('' as decimal(35,
+      10)) as COUNT_PREVIOUS_YTD, '' as MONTH1, cast('' as decimal(35, 10)) as
+      Count_Plan, cast('' as decimal(35, 10)) as Count_Not_Good, cast('' as
+      decimal(35, 10)) as Count_Achievement, '' as COUNTED_ON, '' as DMT, '' as
+      period, cast('' as decimal(35, 10)) as TOTAL_COUNT, '' as DISTINCT_COUNT,
+      '' as ALL_TYPES, '' as ALL_VALUES, '' as PLANT, '' as model, '' as DEPT,
+      '' as location, '' as DEFECT, '' as AUDIT_DATE, '' as YEAR_MONTH, cast(''
+      as decimal(35, 10)) as AVG_TOTAL_COUNT, cast('' as decimal(35, 10)) as
+      TOTAL_COUNT_LD, '' as calendar_month, '' as monthly_values,
+      VM.Parent_Vendor as vendor_code, VM.Parent_Vendor_Name as VENDOR_NAME,
+      cast( ( (SUM(A) * 5) + (SUM(R) * 5) + (SUM(F) * 3) + (SUM(HU) * 5) +
+      (SUM(G) * 1) ) as decimal(35, 10) ) as DEF_SCORE, cast(SUM(MTD) as
+      decimal(35, 10)) as MTD, cast(SUM(YTD) as decimal(35, 10)) as YTD,
+      CURRENT_QUARTER_DATE as CURRENT_QUARTER_DATE, cast(SUM(CURRENT_QUARTER) as
+      decimal(35, 10)) as CURRENT_QUARTER, LAST_QUARTER_DATE as
+      LAST_QUARTER_DATE, cast(SUM(LAST_QUARTER) as decimal(35, 10)) as
+      LAST_QUARTER, SECOND_LAST_QUARTER_DATE as SECOND_LAST_QUARTER_DATE,
+      cast(SUM(SECOND_LAST_QUARTER) as decimal(35, 10)) as SECOND_LAST_QUARTER,
+      THIRD_LAST_QUARTER_DATE as THIRD_LAST_QUARTER_DATE,
+      cast(SUM(THIRD_LAST_QUARTER) as decimal(35, 10)) as THIRD_LAST_QUARTER,
+      cast(SUM(LYTD) as decimal(35, 10)) as LYTD, A as A, R as R, F as F, HU as
+      HU, G as G from LINE_DEFECT_VEND left outer join Vendor_Master_1 VM on
+      LINE_DEFECT_VEND.vendor_code = VM.CHILD_VENDOR where VM.CHILD_VENDOR is
+      not null group by VM.Parent_Vendor, VM.Parent_Vendor_Name,
+      CURRENT_QUARTER_DATE, LAST_QUARTER_DATE, SECOND_LAST_QUARTER_DATE,
+      THIRD_LAST_QUARTER_DATE, A, R, F, HU, G union select
+      'Line_Defect_Vendor_Count' as KPI_Name, '' as DEF_CAT, cast('' as
+      decimal(35, 10)) as COUNT_DAY_MINUS_1, cast('' as decimal(35, 10)) as
+      COUNT_DAY_MINUS_2, cast('' as decimal(35, 10)) as COUNT_CURRENT_MTD,
+      cast('' as decimal(35, 10)) as COUNT_PREVIOUS_MTD, cast('' as decimal(35,
+      10)) as COUNT_CURRENT_YTD, cast('' as decimal(35, 10)) as
+      COUNT_PREVIOUS_YTD, '' as MONTH1, cast('' as decimal(35, 10)) as
+      Count_Plan, cast('' as decimal(35, 10)) as Count_Not_Good, cast('' as
+      decimal(35, 10)) as Count_Achievement, '' as COUNTED_ON, '' as DMT, '' as
+      period, cast('' as decimal(35, 10)) as TOTAL_COUNT, '' as DISTINCT_COUNT,
+      '' as ALL_TYPES, '' as ALL_VALUES, '' as PLANT, '' as model, '' as DEPT,
+      '' as location, '' as DEFECT, '' as AUDIT_DATE, '' as YEAR_MONTH, cast(''
+      as decimal(35, 10)) as AVG_TOTAL_COUNT, cast('' as decimal(35, 10)) as
+      TOTAL_COUNT_LD, '' as calendar_month, '' as monthly_values,
+      LINE_DEFECT_VEND.vendor_code as vendor_code, VM.VENDOR_NAME as
+      VENDOR_NAME, cast(DEF_SCORE as decimal(35, 10)) as DEF_SCORE, cast(MTD as
+      decimal(35, 10)) as MTD, cast(YTD as decimal(35, 10)) as YTD,
+      CURRENT_QUARTER_DATE as CURRENT_QUARTER_DATE, cast(CURRENT_QUARTER as
+      decimal(35, 10)) as CURRENT_QUARTER, LAST_QUARTER_DATE as
+      LAST_QUARTER_DATE, cast(LAST_QUARTER as decimal(35, 10)) as LAST_QUARTER,
+      SECOND_LAST_QUARTER_DATE as SECOND_LAST_QUARTER_DATE,
+      cast(SECOND_LAST_QUARTER as decimal(35, 10)) as SECOND_LAST_QUARTER,
+      THIRD_LAST_QUARTER_DATE as THIRD_LAST_QUARTER_DATE,
+      cast(THIRD_LAST_QUARTER as decimal(35, 10)) as THIRD_LAST_QUARTER,
+      cast(LYTD as decimal(35, 10)) as LYTD, A as A, R as R, F as F, HU as HU, G
+      as G from LINE_DEFECT_VEND left outer join Vendor_Master_1 VM on
+      LINE_DEFECT_VEND.vendor_code = VM.CHILD_VENDOR where
+      LINE_DEFECT_VEND.vendor_code not in ( select distinct CHILD_VENDOR from
+      Vendor_Master_1 VM where VM.CHILD_VENDOR is not null ) and VM.CHILD_VENDOR
+      is not null union select 'Line_Defect_Vendor_Count' as KPI_Name, '' as
+      DEF_CAT, cast('' as decimal(35, 10)) as COUNT_DAY_MINUS_1, cast('' as
+      decimal(35, 10)) as COUNT_DAY_MINUS_2, cast('' as decimal(35, 10)) as
+      COUNT_CURRENT_MTD, cast('' as decimal(35, 10)) as COUNT_PREVIOUS_MTD,
+      cast('' as decimal(35, 10)) as COUNT_CURRENT_YTD, cast('' as decimal(35,
+      10)) as COUNT_PREVIOUS_YTD, '' as MONTH1, cast('' as decimal(35, 10)) as
+      Count_Plan, cast('' as decimal(35, 10)) as Count_Not_Good, cast('' as
+      decimal(35, 10)) as Count_Achievement, '' as COUNTED_ON, '' as DMT, '' as
+      period, cast('' as decimal(35, 10)) as TOTAL_COUNT, '' as DISTINCT_COUNT,
+      '' as ALL_TYPES, '' as ALL_VALUES, '' as PLANT, '' as model, '' as DEPT,
+      '' as location, '' as DEFECT, '' as AUDIT_DATE, '' as YEAR_MONTH, cast(''
+      as decimal(35, 10)) as AVG_TOTAL_COUNT, cast('' as decimal(35, 10)) as
+      TOTAL_COUNT_LD, concat(substring(dt_of_punching, 1, 7), '-01') as
+      calendar_month, count(*) as monthly_values, '' as vendor_code, '' as
+      VENDOR_NAME, cast('' as decimal(35, 10)) as DEF_SCORE, cast('' as
+      decimal(35, 10)) as MTD, cast('' as decimal(35, 10)) as YTD, '' as
+      CURRENT_QUARTER_DATE, cast('' as decimal(35, 10)) as CURRENT_QUARTER, ''
+      as LAST_QUARTER_DATE, cast('' as decimal(35, 10)) as LAST_QUARTER, '' as
+      SECOND_LAST_QUARTER_DATE, cast('' as decimal(35, 10)) as
+      SECOND_LAST_QUARTER, '' as THIRD_LAST_QUARTER_DATE, cast('' as decimal(35,
+      10)) as THIRD_LAST_QUARTER, '' as LYTD, '' as A, '' as R, '' as F, '' as
+      HU, '' as G from Line_Defects_and_Rejections_1 group by
+      concat(substring(dt_of_punching, 1, 7), '-01') ) ) union ( select
+      'Revalidation_New' as KPI_Name, '' as DEF_CAT, cast('' as decimal(35, 10))
+      as COUNT_DAY_MINUS_1, cast('' as decimal(35, 10)) as COUNT_DAY_MINUS_2,
+      cast(NVL(counts_mtd, 0) as decimal(35, 10)) as COUNT_CURRENT_MTD, cast(''
+      as decimal(35, 10)) as COUNT_PREVIOUS_MTD, cast(NVL(counts_ytd, 0) as
+      decimal(35, 10)) as COUNT_CURRENT_YTD, cast('' as decimal(35, 10)) as
+      COUNT_PREVIOUS_YTD, '' as MONTH1, cast('' as decimal(35, 10)) as
+      Count_Plan, cast('' as decimal(35, 10)) as Count_Not_Good, cast('' as
+      decimal(35, 10)) as Count_Achievement, '' as COUNTED_ON, '' as DMT, '' as
+      period, cast('' as decimal(35, 10)) as TOTAL_COUNT, '' as DISTINCT_COUNT,
+      ALL_TYPES, ALL_VALUES, '' as PLANT, '' as model, '' as DEPT, '' as
+      location, '' as DEFECT, '' as AUDIT_DATE, '' as YEAR_MONTH, cast('' as
+      decimal(35, 10)) as AVG_TOTAL_COUNT, cast('' as decimal(35, 10)) as
+      TOTAL_COUNT_LD, '' as calendar_month, '' as monthly_values, '' as
+      vendor_code, '' as VENDOR_NAME, cast('' as decimal(35, 10)) as DEF_SCORE,
+      cast('' as decimal(35, 10)) as MTD, cast('' as decimal(35, 10)) as YTD, ''
+      as CURRENT_QUARTER_DATE, cast('' as decimal(35, 10)) as CURRENT_QUARTER,
+      '' as LAST_QUARTER_DATE, cast('' as decimal(35, 10)) as LAST_QUARTER, ''
+      as SECOND_LAST_QUARTER_DATE, cast('' as decimal(35, 10)) as
+      SECOND_LAST_QUARTER, '' as THIRD_LAST_QUARTER_DATE, cast('' as decimal(35,
+      10)) as THIRD_LAST_QUARTER, '' as LYTD, '' as A, '' as R, '' as F, '' as
+      HU, '' as G from ( select tab_all_types.all_types as all_types,
+      tab_all_values.all_values as all_values, coalesce(tab_all_counts_mtd.cnt,
+      cast(0 as INTEGER)) as counts_mtd, coalesce(tab_all_counts_ytd.cnt, cast(0
+      as INTEGER)) as counts_ytd from ((( select unnamed_unpivot2.all_values
+      from ( select cast('NG' as VARCHAR(21)) as ng, cast('OK' as VARCHAR(21))
+      as ok, cast('TOTAL' as VARCHAR(21)) as total, cast('PLANNED' as
+      VARCHAR(21)) as planned, cast('PENDING' as VARCHAR(21)) as pending,
+      cast('COMPLETED' as VARCHAR(21)) as completed) as derived_table1 unpivot
+      exclude nulls (all_values for color in (derived_table1.ng as ng,
+      derived_table1.ok as ok, derived_table1.total as total,
+      derived_table1.planned as planned, derived_table1.pending as pending,
+      derived_table1.completed as completed)) as unnamed_unpivot2) as
+      tab_all_values inner join ( select unnamed_unpivot4.all_types from (
+      select cast('PR' as VARCHAR(21)) as pr, cast('PA' as VARCHAR(21)) as pa)
+      as derived_table3 unpivot exclude nulls (all_types for color in
+      (derived_table3.pr as pr, derived_table3.pa as pa)) as unnamed_unpivot4)
+      as tab_all_types on cast(true as BOOLEAN)) left join ((((( select
+      qaqd_rpam_mtd.rpam_type as rpam_type, cast('TOTAL' as VARCHAR(21)) as
+      status, COUNT(cast(1 as INTEGER)) as cnt from ( select aa.rpam_type as
+      rpam_type, aa.rpam_part_no as rpam_part_no, aa.rpam_part_name as
+      rpam_part_name, aa.rpam_vend_name as rpam_vend_name, aa.rpam_vend_code as
+      rpam_vend_code, aa.rpam_part_category as rpam_part_category, aa.rpam_modl
+      as rpam_modl, aa.rpam_plan_date as rpam_plan_date, aa.rpam_act_date as
+      rpam_act_date, aa.rpam_status as rpam_status, aa.rpam_observation_rval as
+      rpam_observation_rval, aa.rpam_observation_audt as rpam_observation_audt,
+      aa.rpam_next_plan_date as rpam_next_plan_date, aa.rpam_user_id as
+      rpam_user_id, aa.rpam_maint_opn as rpam_maint_opn, aa.rpam_maint_proc as
+      rpam_maint_proc, aa.rpam_maint_pers as rpam_maint_pers, aa.rpam_maint_date
+      as rpam_maint_date, aa.rpam_nc_1 as rpam_nc_1, aa.rpam_nc_2 as rpam_nc_2,
+      aa.rpam_nc_3 as rpam_nc_3, aa.rpam_nc_4 as rpam_nc_4, aa.rpam_nc_5 as
+      rpam_nc_5, aa.rpam_nc_count as rpam_nc_count, aa.rpam_dept as rpam_dept,
+      aa.rpam_ng_detail as rpam_ng_detail from QAQD_RPAM_DEDUP as aa where
+      (aa.rpam_maint_date = ( select MAX(y.rpam_maint_date) as max from
+      QAQD_RPAM_DEDUP as y where ((((aa.rpam_part_no = y.rpam_part_no) and
+      (aa.rpam_user_id = y.rpam_user_id)) and (aa.rpam_type = y.rpam_type)) and
+      (aa.rpam_plan_date = y.rpam_plan_date)) and (aa.rpam_vend_code =
+      y.rpam_vend_code))) and date_format(aa.rpam_plan_date, 'YYYYMM') =
+      date_format(CURRENT_DATE, 'YYYYMM')) as qaqd_rpam_mtd group by
+      qaqd_rpam_mtd.rpam_type, cast('TOTAL' as VARCHAR(21))) union ( select
+      qaqd_rpam_mtd_1.rpam_type as rpam_type, cast('COMPLETED' as VARCHAR(21))
+      as status, COUNT(cast(1 as INTEGER)) as cnt from ( select aa_1.rpam_type
+      as rpam_type, aa_1.rpam_part_no as rpam_part_no, aa_1.rpam_part_name as
+      rpam_part_name, aa_1.rpam_vend_name as rpam_vend_name, aa_1.rpam_vend_code
+      as rpam_vend_code, aa_1.rpam_part_category as rpam_part_category,
+      aa_1.rpam_modl as rpam_modl, aa_1.rpam_plan_date as rpam_plan_date,
+      aa_1.rpam_act_date as rpam_act_date, aa_1.rpam_status as rpam_status,
+      aa_1.rpam_observation_rval as rpam_observation_rval,
+      aa_1.rpam_observation_audt as rpam_observation_audt,
+      aa_1.rpam_next_plan_date as rpam_next_plan_date, aa_1.rpam_user_id as
+      rpam_user_id, aa_1.rpam_maint_opn as rpam_maint_opn, aa_1.rpam_maint_proc
+      as rpam_maint_proc, aa_1.rpam_maint_pers as rpam_maint_pers,
+      aa_1.rpam_maint_date as rpam_maint_date, aa_1.rpam_nc_1 as rpam_nc_1,
+      aa_1.rpam_nc_2 as rpam_nc_2, aa_1.rpam_nc_3 as rpam_nc_3, aa_1.rpam_nc_4
+      as rpam_nc_4, aa_1.rpam_nc_5 as rpam_nc_5, aa_1.rpam_nc_count as
+      rpam_nc_count, aa_1.rpam_dept as rpam_dept, aa_1.rpam_ng_detail as
+      rpam_ng_detail from QAQD_RPAM_DEDUP as aa_1 where (aa_1.rpam_maint_date =
+      ( select MAX(y_1.rpam_maint_date) as max from QAQD_RPAM_DEDUP as y_1 where
+      ((((aa_1.rpam_part_no = y_1.rpam_part_no) and (aa_1.rpam_user_id =
+      y_1.rpam_user_id)) and (aa_1.rpam_type = y_1.rpam_type)) and
+      (aa_1.rpam_plan_date = y_1.rpam_plan_date)) and (aa_1.rpam_vend_code =
+      y_1.rpam_vend_code))) and date_format(aa_1.rpam_plan_date, 'YYYYMM') =
+      date_format(CURRENT_DATE, 'YYYYMM')) as qaqd_rpam_mtd_1 where
+      (qaqd_rpam_mtd_1.rpam_status = cast('OK' as VARCHAR(21))) or
+      (qaqd_rpam_mtd_1.rpam_status = cast('NG' as VARCHAR(21))) group by
+      qaqd_rpam_mtd_1.rpam_type, cast('COMPLETED' as VARCHAR(21)))) union (
+      select derived_table5.rpam_type as rpam_type, derived_table5.status as
+      status, COUNT(cast(1 as INTEGER)) as cnt from ( select
+      qaqd_rpam_mtd_2.rpam_type as rpam_type, case when
+      ((qaqd_rpam_mtd_2.rpam_status = cast('' as VARCHAR(21))) ) then case when
+      (qaqd_rpam_mtd_2.rpam_act_date is null and (qaqd_rpam_mtd_2.rpam_plan_date
+      <= CURRENT_DATE)) then cast('PENDING' as VARCHAR(21)) else cast('PLANNED'
+      as VARCHAR(21)) end when ((qaqd_rpam_mtd_2.rpam_status = cast(null as
+      VARCHAR(21))) or (qaqd_rpam_mtd_2.rpam_status is null) ) then case when
+      (qaqd_rpam_mtd_2.rpam_act_date is null and (qaqd_rpam_mtd_2.rpam_plan_date
+      <= CURRENT_DATE)) then cast('PENDING' as VARCHAR(21)) else cast('PLANNED'
+      as VARCHAR(21)) end when ((qaqd_rpam_mtd_2.rpam_status = cast('Postpone'
+      as VARCHAR(21))) ) then cast('PENDING' as VARCHAR(21)) else
+      qaqd_rpam_mtd_2.rpam_status end as status from ( select aa_2.rpam_type as
+      rpam_type, aa_2.rpam_part_no as rpam_part_no, aa_2.rpam_part_name as
+      rpam_part_name, aa_2.rpam_vend_name as rpam_vend_name, aa_2.rpam_vend_code
+      as rpam_vend_code, aa_2.rpam_part_category as rpam_part_category,
+      aa_2.rpam_modl as rpam_modl, aa_2.rpam_plan_date as rpam_plan_date,
+      aa_2.rpam_act_date as rpam_act_date, aa_2.rpam_status as rpam_status,
+      aa_2.rpam_observation_rval as rpam_observation_rval,
+      aa_2.rpam_observation_audt as rpam_observation_audt,
+      aa_2.rpam_next_plan_date as rpam_next_plan_date, aa_2.rpam_user_id as
+      rpam_user_id, aa_2.rpam_maint_opn as rpam_maint_opn, aa_2.rpam_maint_proc
+      as rpam_maint_proc, aa_2.rpam_maint_pers as rpam_maint_pers,
+      aa_2.rpam_maint_date as rpam_maint_date, aa_2.rpam_nc_1 as rpam_nc_1,
+      aa_2.rpam_nc_2 as rpam_nc_2, aa_2.rpam_nc_3 as rpam_nc_3, aa_2.rpam_nc_4
+      as rpam_nc_4, aa_2.rpam_nc_5 as rpam_nc_5, aa_2.rpam_nc_count as
+      rpam_nc_count, aa_2.rpam_dept as rpam_dept, aa_2.rpam_ng_detail as
+      rpam_ng_detail from QAQD_RPAM_DEDUP as aa_2 where (aa_2.rpam_maint_date =
+      ( select MAX(y_2.rpam_maint_date) as max from QAQD_RPAM_DEDUP as y_2 where
+      ((((aa_2.rpam_part_no = y_2.rpam_part_no) and (aa_2.rpam_user_id =
+      y_2.rpam_user_id)) and (aa_2.rpam_type = y_2.rpam_type)) and
+      (aa_2.rpam_plan_date = y_2.rpam_plan_date)) and (aa_2.rpam_vend_code =
+      y_2.rpam_vend_code))) and date_format(aa_2.rpam_plan_date, 'YYYYMM') =
+      date_format(CURRENT_DATE, 'YYYYMM')) as qaqd_rpam_mtd_2 where
+      ((qaqd_rpam_mtd_2.rpam_status = cast('' as VARCHAR(21))) or
+      (qaqd_rpam_mtd_2.rpam_status = cast('Postpone' as VARCHAR(21)))) or
+      qaqd_rpam_mtd_2.rpam_status is null) as derived_table5 group by
+      derived_table5.rpam_type, derived_table5.status)) union ( select
+      qaqd_rpam_mtd_3.rpam_type as rpam_type, cast('NG' as VARCHAR(21)) as
+      status, COUNT(cast(1 as INTEGER)) as cnt from ( select aa_3.rpam_type as
+      rpam_type, aa_3.rpam_part_no as rpam_part_no, aa_3.rpam_part_name as
+      rpam_part_name, aa_3.rpam_vend_name as rpam_vend_name, aa_3.rpam_vend_code
+      as rpam_vend_code, aa_3.rpam_part_category as rpam_part_category,
+      aa_3.rpam_modl as rpam_modl, aa_3.rpam_plan_date as rpam_plan_date,
+      aa_3.rpam_act_date as rpam_act_date, aa_3.rpam_status as rpam_status,
+      aa_3.rpam_observation_rval as rpam_observation_rval,
+      aa_3.rpam_observation_audt as rpam_observation_audt,
+      aa_3.rpam_next_plan_date as rpam_next_plan_date, aa_3.rpam_user_id as
+      rpam_user_id, aa_3.rpam_maint_opn as rpam_maint_opn, aa_3.rpam_maint_proc
+      as rpam_maint_proc, aa_3.rpam_maint_pers as rpam_maint_pers,
+      aa_3.rpam_maint_date as rpam_maint_date, aa_3.rpam_nc_1 as rpam_nc_1,
+      aa_3.rpam_nc_2 as rpam_nc_2, aa_3.rpam_nc_3 as rpam_nc_3, aa_3.rpam_nc_4
+      as rpam_nc_4, aa_3.rpam_nc_5 as rpam_nc_5, aa_3.rpam_nc_count as
+      rpam_nc_count, aa_3.rpam_dept as rpam_dept, aa_3.rpam_ng_detail as
+      rpam_ng_detail from QAQD_RPAM_DEDUP as aa_3 where (aa_3.rpam_maint_date =
+      ( select MAX(y_3.rpam_maint_date) as max from QAQD_RPAM_DEDUP as y_3 where
+      ((((aa_3.rpam_part_no = y_3.rpam_part_no) and (aa_3.rpam_user_id =
+      y_3.rpam_user_id)) and (aa_3.rpam_type = y_3.rpam_type)) and
+      (aa_3.rpam_plan_date = y_3.rpam_plan_date)) and (aa_3.rpam_vend_code =
+      y_3.rpam_vend_code))) and date_format(aa_3.rpam_plan_date, 'YYYYMM') =
+      date_format(CURRENT_DATE, 'YYYYMM')) as qaqd_rpam_mtd_3 where
+      qaqd_rpam_mtd_3.rpam_status = cast('NG' as VARCHAR(21)) group by
+      qaqd_rpam_mtd_3.rpam_type, cast('NG' as VARCHAR(21)))) union ( select
+      qaqd_rpam_mtd_4.rpam_type as rpam_type, cast('OK' as VARCHAR(21)) as
+      status, COUNT(cast(1 as INTEGER)) as cnt from ( select aa_4.rpam_type as
+      rpam_type, aa_4.rpam_part_no as rpam_part_no, aa_4.rpam_part_name as
+      rpam_part_name, aa_4.rpam_vend_name as rpam_vend_name, aa_4.rpam_vend_code
+      as rpam_vend_code, aa_4.rpam_part_category as rpam_part_category,
+      aa_4.rpam_modl as rpam_modl, aa_4.rpam_plan_date as rpam_plan_date,
+      aa_4.rpam_act_date as rpam_act_date, aa_4.rpam_status as rpam_status,
+      aa_4.rpam_observation_rval as rpam_observation_rval,
+      aa_4.rpam_observation_audt as rpam_observation_audt,
+      aa_4.rpam_next_plan_date as rpam_next_plan_date, aa_4.rpam_user_id as
+      rpam_user_id, aa_4.rpam_maint_opn as rpam_maint_opn, aa_4.rpam_maint_proc
+      as rpam_maint_proc, aa_4.rpam_maint_pers as rpam_maint_pers,
+      aa_4.rpam_maint_date as rpam_maint_date, aa_4.rpam_nc_1 as rpam_nc_1,
+      aa_4.rpam_nc_2 as rpam_nc_2, aa_4.rpam_nc_3 as rpam_nc_3, aa_4.rpam_nc_4
+      as rpam_nc_4, aa_4.rpam_nc_5 as rpam_nc_5, aa_4.rpam_nc_count as
+      rpam_nc_count, aa_4.rpam_dept as rpam_dept, aa_4.rpam_ng_detail as
+      rpam_ng_detail from QAQD_RPAM_DEDUP as aa_4 where (aa_4.rpam_maint_date =
+      ( select MAX(y_4.rpam_maint_date) as max from QAQD_RPAM_DEDUP as y_4 where
+      ((((aa_4.rpam_part_no = y_4.rpam_part_no) and (aa_4.rpam_user_id =
+      y_4.rpam_user_id)) and (aa_4.rpam_type = y_4.rpam_type)) and
+      (aa_4.rpam_plan_date = y_4.rpam_plan_date)) and (aa_4.rpam_vend_code =
+      y_4.rpam_vend_code))) and (date_format(aa_4.rpam_plan_date, 'YYYYMM') =
+      date_format(CURRENT_DATE, 'YYYYMM'))) as qaqd_rpam_mtd_4 where
+      qaqd_rpam_mtd_4.rpam_status = cast('OK' as VARCHAR(21)) group by
+      qaqd_rpam_mtd_4.rpam_type, cast('OK' as VARCHAR(21)))) as
+      tab_all_counts_mtd on (tab_all_types.all_types =
+      tab_all_counts_mtd.rpam_type) and (tab_all_values.all_values =
+      tab_all_counts_mtd.status)) left join ((((( select qaqd_rpam_ytd.rpam_type
+      as rpam_type, cast('TOTAL' as VARCHAR(21)) as status, COUNT(cast(1 as
+      INTEGER)) as cnt from ( select aa_5.rpam_type as rpam_type,
+      aa_5.rpam_part_no as rpam_part_no, aa_5.rpam_part_name as rpam_part_name,
+      aa_5.rpam_vend_name as rpam_vend_name, aa_5.rpam_vend_code as
+      rpam_vend_code, aa_5.rpam_part_category as rpam_part_category,
+      aa_5.rpam_modl as rpam_modl, aa_5.rpam_plan_date as rpam_plan_date,
+      aa_5.rpam_act_date as rpam_act_date, aa_5.rpam_status as rpam_status,
+      aa_5.rpam_observation_rval as rpam_observation_rval,
+      aa_5.rpam_observation_audt as rpam_observation_audt,
+      aa_5.rpam_next_plan_date as rpam_next_plan_date, aa_5.rpam_user_id as
+      rpam_user_id, aa_5.rpam_maint_opn as rpam_maint_opn, aa_5.rpam_maint_proc
+      as rpam_maint_proc, aa_5.rpam_maint_pers as rpam_maint_pers,
+      aa_5.rpam_maint_date as rpam_maint_date, aa_5.rpam_nc_1 as rpam_nc_1,
+      aa_5.rpam_nc_2 as rpam_nc_2, aa_5.rpam_nc_3 as rpam_nc_3, aa_5.rpam_nc_4
+      as rpam_nc_4, aa_5.rpam_nc_5 as rpam_nc_5, aa_5.rpam_nc_count as
+      rpam_nc_count, aa_5.rpam_dept as rpam_dept, aa_5.rpam_ng_detail as
+      rpam_ng_detail from QAQD_RPAM_DEDUP as aa_5 where (aa_5.rpam_maint_date =
+      ( select MAX(y_5.rpam_maint_date) as max from QAQD_RPAM_DEDUP as y_5 where
+      ((((aa_5.rpam_part_no = y_5.rpam_part_no) and (aa_5.rpam_user_id =
+      y_5.rpam_user_id)) and (aa_5.rpam_type = y_5.rpam_type)) and
+      (aa_5.rpam_plan_date = y_5.rpam_plan_date)) and (aa_5.rpam_vend_code =
+      y_5.rpam_vend_code))) and ((aa_5.rpam_plan_date >= ( case when
+      month(current_date-1) >= 4 then TO_DATE(CONCAT(year(current_date),
+      '-04-01'), 'yyyy-MM-dd') else TO_DATE( CONCAT(year(current_date) - 1,
+      '-04-01'), 'yyyy-MM-dd' ) end)) and (aa_5.rpam_plan_date <=
+      LAST_DAY(CURRENT_DATE-1)))) as qaqd_rpam_ytd group by
+      qaqd_rpam_ytd.rpam_type, cast('TOTAL' as VARCHAR(21))) union ( select
+      qaqd_rpam_ytd_1.rpam_type as rpam_type, cast('COMPLETED' as VARCHAR(21))
+      as status, COUNT(cast(1 as INTEGER)) as cnt from ( select aa_6.rpam_type
+      as rpam_type, aa_6.rpam_part_no as rpam_part_no, aa_6.rpam_part_name as
+      rpam_part_name, aa_6.rpam_vend_name as rpam_vend_name, aa_6.rpam_vend_code
+      as rpam_vend_code, aa_6.rpam_part_category as rpam_part_category,
+      aa_6.rpam_modl as rpam_modl, aa_6.rpam_plan_date as rpam_plan_date,
+      aa_6.rpam_act_date as rpam_act_date, aa_6.rpam_status as rpam_status,
+      aa_6.rpam_observation_rval as rpam_observation_rval,
+      aa_6.rpam_observation_audt as rpam_observation_audt,
+      aa_6.rpam_next_plan_date as rpam_next_plan_date, aa_6.rpam_user_id as
+      rpam_user_id, aa_6.rpam_maint_opn as rpam_maint_opn, aa_6.rpam_maint_proc
+      as rpam_maint_proc, aa_6.rpam_maint_pers as rpam_maint_pers,
+      aa_6.rpam_maint_date as rpam_maint_date, aa_6.rpam_nc_1 as rpam_nc_1,
+      aa_6.rpam_nc_2 as rpam_nc_2, aa_6.rpam_nc_3 as rpam_nc_3, aa_6.rpam_nc_4
+      as rpam_nc_4, aa_6.rpam_nc_5 as rpam_nc_5, aa_6.rpam_nc_count as
+      rpam_nc_count, aa_6.rpam_dept as rpam_dept, aa_6.rpam_ng_detail as
+      rpam_ng_detail from QAQD_RPAM_DEDUP as aa_6 where (aa_6.rpam_maint_date =
+      ( select MAX(y_6.rpam_maint_date) as max from QAQD_RPAM_DEDUP as y_6 where
+      ((((aa_6.rpam_part_no = y_6.rpam_part_no) and (aa_6.rpam_user_id =
+      y_6.rpam_user_id)) and (aa_6.rpam_type = y_6.rpam_type)) and
+      (aa_6.rpam_plan_date = y_6.rpam_plan_date)) and (aa_6.rpam_vend_code =
+      y_6.rpam_vend_code))) and ((aa_6.rpam_plan_date >= ( case when
+      month(current_date-1) >= 4 then TO_DATE(CONCAT(year(current_date),
+      '-04-01'), 'yyyy-MM-dd') else TO_DATE( CONCAT(year(current_date) - 1,
+      '-04-01'), 'yyyy-MM-dd' ) end)) and (aa_6.rpam_plan_date <=
+      LAST_DAY(CURRENT_DATE-1)))) as qaqd_rpam_ytd_1 where
+      (qaqd_rpam_ytd_1.rpam_status = cast('OK' as VARCHAR(21))) or
+      (qaqd_rpam_ytd_1.rpam_status = cast('NG' as VARCHAR(21))) group by
+      qaqd_rpam_ytd_1.rpam_type, cast('COMPLETED' as VARCHAR(21)))) union (
+      select derived_table6.rpam_type as rpam_type, derived_table6.status as
+      status, COUNT(cast(1 as INTEGER)) as cnt from ( select
+      qaqd_rpam_ytd_2.rpam_type as rpam_type, case when
+      ((qaqd_rpam_ytd_2.rpam_status = cast('' as VARCHAR(21))) ) then case when
+      (qaqd_rpam_ytd_2.rpam_act_date is null and (qaqd_rpam_ytd_2.rpam_plan_date
+      <= CURRENT_DATE)) then cast('PENDING' as VARCHAR(21)) else cast('PLANNED'
+      as VARCHAR(21)) end when ((qaqd_rpam_ytd_2.rpam_status = cast(null as
+      VARCHAR(21))) or (qaqd_rpam_ytd_2.rpam_status is null) ) then case when
+      (qaqd_rpam_ytd_2.rpam_act_date is null and (qaqd_rpam_ytd_2.rpam_plan_date
+      <= CURRENT_DATE)) then cast('PENDING' as VARCHAR(21)) else cast('PLANNED'
+      as VARCHAR(21)) end when ((qaqd_rpam_ytd_2.rpam_status = cast('Postpone'
+      as VARCHAR(21))) ) then cast('PENDING' as VARCHAR(21)) else
+      qaqd_rpam_ytd_2.rpam_status end as status from ( select aa_7.rpam_type as
+      rpam_type, aa_7.rpam_part_no as rpam_part_no, aa_7.rpam_part_name as
+      rpam_part_name, aa_7.rpam_vend_name as rpam_vend_name, aa_7.rpam_vend_code
+      as rpam_vend_code, aa_7.rpam_part_category as rpam_part_category,
+      aa_7.rpam_modl as rpam_modl, aa_7.rpam_plan_date as rpam_plan_date,
+      aa_7.rpam_act_date as rpam_act_date, aa_7.rpam_status as rpam_status,
+      aa_7.rpam_observation_rval as rpam_observation_rval,
+      aa_7.rpam_observation_audt as rpam_observation_audt,
+      aa_7.rpam_next_plan_date as rpam_next_plan_date, aa_7.rpam_user_id as
+      rpam_user_id, aa_7.rpam_maint_opn as rpam_maint_opn, aa_7.rpam_maint_proc
+      as rpam_maint_proc, aa_7.rpam_maint_pers as rpam_maint_pers,
+      aa_7.rpam_maint_date as rpam_maint_date, aa_7.rpam_nc_1 as rpam_nc_1,
+      aa_7.rpam_nc_2 as rpam_nc_2, aa_7.rpam_nc_3 as rpam_nc_3, aa_7.rpam_nc_4
+      as rpam_nc_4, aa_7.rpam_nc_5 as rpam_nc_5, aa_7.rpam_nc_count as
+      rpam_nc_count, aa_7.rpam_dept as rpam_dept, aa_7.rpam_ng_detail as
+      rpam_ng_detail from QAQD_RPAM_DEDUP as aa_7 where (aa_7.rpam_maint_date =
+      ( select MAX(y_7.rpam_maint_date) as max from QAQD_RPAM_DEDUP as y_7 where
+      ((((aa_7.rpam_part_no = y_7.rpam_part_no) and (aa_7.rpam_user_id =
+      y_7.rpam_user_id)) and (aa_7.rpam_type = y_7.rpam_type)) and
+      (aa_7.rpam_plan_date = y_7.rpam_plan_date)) and (aa_7.rpam_vend_code =
+      y_7.rpam_vend_code))) and ((aa_7.rpam_plan_date >= ( case when
+      month(current_date-1) >= 4 then TO_DATE(CONCAT(year(current_date),
+      '-04-01'), 'yyyy-MM-dd') else TO_DATE( CONCAT(year(current_date) - 1,
+      '-04-01'), 'yyyy-MM-dd' ) end)) and (aa_7.rpam_plan_date <=
+      LAST_DAY(CURRENT_DATE-1)))) as qaqd_rpam_ytd_2 where
+      ((qaqd_rpam_ytd_2.rpam_status = cast('' as VARCHAR(21))) or
+      (qaqd_rpam_ytd_2.rpam_status = cast('Postpone' as VARCHAR(21)))) or
+      qaqd_rpam_ytd_2.rpam_status is null) as derived_table6 group by
+      derived_table6.rpam_type, derived_table6.status)) union ( select
+      qaqd_rpam_ytd_3.rpam_type as rpam_type, cast('NG' as VARCHAR(21)) as
+      status, COUNT(cast(1 as INTEGER)) as cnt from ( select aa_8.rpam_type as
+      rpam_type, aa_8.rpam_part_no as rpam_part_no, aa_8.rpam_part_name as
+      rpam_part_name, aa_8.rpam_vend_name as rpam_vend_name, aa_8.rpam_vend_code
+      as rpam_vend_code, aa_8.rpam_part_category as rpam_part_category,
+      aa_8.rpam_modl as rpam_modl, aa_8.rpam_plan_date as rpam_plan_date,
+      aa_8.rpam_act_date as rpam_act_date, aa_8.rpam_status as rpam_status,
+      aa_8.rpam_observation_rval as rpam_observation_rval,
+      aa_8.rpam_observation_audt as rpam_observation_audt,
+      aa_8.rpam_next_plan_date as rpam_next_plan_date, aa_8.rpam_user_id as
+      rpam_user_id, aa_8.rpam_maint_opn as rpam_maint_opn, aa_8.rpam_maint_proc
+      as rpam_maint_proc, aa_8.rpam_maint_pers as rpam_maint_pers,
+      aa_8.rpam_maint_date as rpam_maint_date, aa_8.rpam_nc_1 as rpam_nc_1,
+      aa_8.rpam_nc_2 as rpam_nc_2, aa_8.rpam_nc_3 as rpam_nc_3, aa_8.rpam_nc_4
+      as rpam_nc_4, aa_8.rpam_nc_5 as rpam_nc_5, aa_8.rpam_nc_count as
+      rpam_nc_count, aa_8.rpam_dept as rpam_dept, aa_8.rpam_ng_detail as
+      rpam_ng_detail from QAQD_RPAM_DEDUP as aa_8 where (aa_8.rpam_maint_date =
+      ( select MAX(y_8.rpam_maint_date) as max from QAQD_RPAM_DEDUP as y_8 where
+      ((((aa_8.rpam_part_no = y_8.rpam_part_no) and (aa_8.rpam_user_id =
+      y_8.rpam_user_id)) and (aa_8.rpam_type = y_8.rpam_type)) and
+      (aa_8.rpam_plan_date = y_8.rpam_plan_date)) and (aa_8.rpam_vend_code =
+      y_8.rpam_vend_code))) and ((aa_8.rpam_plan_date >= ( case when
+      month(current_date-1) >= 4 then TO_DATE(CONCAT(year(current_date),
+      '-04-01'), 'yyyy-MM-dd') else TO_DATE( CONCAT(year(current_date) - 1,
+      '-04-01'), 'yyyy-MM-dd' ) end)) and (aa_8.rpam_plan_date <=
+      LAST_DAY(CURRENT_DATE-1)))) as qaqd_rpam_ytd_3 where
+      qaqd_rpam_ytd_3.rpam_status = cast('NG' as VARCHAR(21)) group by
+      qaqd_rpam_ytd_3.rpam_type, cast('NG' as VARCHAR(21)))) union ( select
+      qaqd_rpam_ytd_4.rpam_type as rpam_type, cast('OK' as VARCHAR(21)) as
+      status, COUNT(cast(1 as INTEGER)) as cnt from ( select aa_9.rpam_type as
+      rpam_type, aa_9.rpam_part_no as rpam_part_no, aa_9.rpam_part_name as
+      rpam_part_name, aa_9.rpam_vend_name as rpam_vend_name, aa_9.rpam_vend_code
+      as rpam_vend_code, aa_9.rpam_part_category as rpam_part_category,
+      aa_9.rpam_modl as rpam_modl, aa_9.rpam_plan_date as rpam_plan_date,
+      aa_9.rpam_act_date as rpam_act_date, aa_9.rpam_status as rpam_status,
+      aa_9.rpam_observation_rval as rpam_observation_rval,
+      aa_9.rpam_observation_audt as rpam_observation_audt,
+      aa_9.rpam_next_plan_date as rpam_next_plan_date, aa_9.rpam_user_id as
+      rpam_user_id, aa_9.rpam_maint_opn as rpam_maint_opn, aa_9.rpam_maint_proc
+      as rpam_maint_proc, aa_9.rpam_maint_pers as rpam_maint_pers,
+      aa_9.rpam_maint_date as rpam_maint_date, aa_9.rpam_nc_1 as rpam_nc_1,
+      aa_9.rpam_nc_2 as rpam_nc_2, aa_9.rpam_nc_3 as rpam_nc_3, aa_9.rpam_nc_4
+      as rpam_nc_4, aa_9.rpam_nc_5 as rpam_nc_5, aa_9.rpam_nc_count as
+      rpam_nc_count, aa_9.rpam_dept as rpam_dept, aa_9.rpam_ng_detail as
+      rpam_ng_detail from QAQD_RPAM_DEDUP as aa_9 where (aa_9.rpam_maint_date =
+      ( select MAX(y_9.rpam_maint_date) as max from QAQD_RPAM_DEDUP as y_9 where
+      ((((aa_9.rpam_part_no = y_9.rpam_part_no) and (aa_9.rpam_user_id =
+      y_9.rpam_user_id)) and (aa_9.rpam_type = y_9.rpam_type)) and
+      (aa_9.rpam_plan_date = y_9.rpam_plan_date)) and (aa_9.rpam_vend_code =
+      y_9.rpam_vend_code))) and ((aa_9.rpam_plan_date >= ( case when
+      month(current_date-1) >= 4 then TO_DATE(CONCAT(year(current_date),
+      '-04-01'), 'yyyy-MM-dd') else TO_DATE( CONCAT(year(current_date) - 1,
+      '-04-01'), 'yyyy-MM-dd' ) end)) and (aa_9.rpam_plan_date <=
+      LAST_DAY(CURRENT_DATE-1)))) as qaqd_rpam_ytd_4 where
+      qaqd_rpam_ytd_4.rpam_status = cast('OK' as VARCHAR(21)) group by
+      qaqd_rpam_ytd_4.rpam_type, cast('OK' as VARCHAR(21)))) as
+      tab_all_counts_ytd on (tab_all_types.all_types =
+      tab_all_counts_ytd.rpam_type) and (tab_all_values.all_values =
+      tab_all_counts_ytd.status) order by tab_all_types.all_types asc nulls
+      last, tab_all_values.all_values asc nulls last) )
+    optional:
+      persistDataFrame: false
+    type: operationThroughSqlQuery
+  - isDynamic: true
+    alias: Audit_Column
+    description: asd
+    sequence: 10
+    inputDataFrameList:
+      - inputDataFrame: Spark_SQL_1
+        tempViewName: df
+    query: select *,  current_date as ETL_Inserted_Date,   current_date as
+      ETL_Modified_Date from df
     optional:
       persistDataFrame: false
     type: operationThroughSqlQuery
 controlPort:
   dataQualityRules: {}
-outputPort:
-  subscriptionChannels:
-    - channelType: Postgres
-      queryType: SQL
-    - channelType: Dataproduct
-      queryType: SQL
