@@ -1,14 +1,13 @@
-version: 0.0.3
-jobId: "481"
-jobName: Test_19th_march
+version: 0.0.9
+jobId: "394"
+jobName: Test_iceberg_biglake_SCD1_Mansi
 jobType: Source Aligned Data Product
 domain: operation
-alias: test_kavish_19_th_2nd
+alias: Write_ice7_123
 discoveryPort:
-  name: Test_19th_march_2nd
-  shortDescription: test 
+  name: Test_iceberg_biglake_SCD1_Mansi7_1234
 inputPorts:
-  - alias: gcp_read_csv_Mansi_1
+  - alias: gcp_read_csv_Mansi_1234
     isDynamic: true
     path: gs://dabur_poc_inutdata/scd1_testing_csv/incr_1.csv
     optional:
@@ -21,54 +20,47 @@ inputPorts:
       dataSetUrn: urn:dv:dataset:7dd6d6aa-4f56-4a6a-a558-b227ba5ad7c2
     type: inputDelimited
 productState:
-  persistDataFrame: false
-  catalogType: glue
-  enforceSchema: false
-  stepName: test
-  tableName: test
-  warehousePath: test
-  catalogName: test
-  type: readDataIceberg
-  isStateManagement: true
-  sequence: 3
-  alias: test
-  refreshInterval: 5 1 * * *
+  isDynamic: true
+  alias: Write_ice
   retentionVersions: ""
   logicalSchema:
     properties:
-      City:
-        type: STRING
-        description: ""
-      Region:
-        type: STRING
-        description: ""
-      Country:
-        type: STRING
-        description: ""
-      Latitude:
-        type: STRING
-        description: ""
-      Longitude:
-        type: STRING
-        description: ""
-      Timezone:
-        type: STRING
-        description: ""
-      Local Time:
-        type: STRING
-        description: ""
-  enforceSchemaMethod: ""
+      city: STRING
+  stateStoreType: loadDataIceberg
   isProfilingEnabled: false
+  updateStrategy: SCD1
+  tableName: iceberg_db.scd1_data
+  warehousePath: gs://dabur_poc_inutdata/iceberg_warehouse/
+  catalogName: random_catalog
+  optional:
+    persistDataFrame: false
+    enableDataReconciliation: false
+    enforceSchema: false
+    enforceSchemaMethod: Warning
+    catalogType: biglake
+    changeTrackingColumns:
+      - value
+    timestampColumn: modified2
+    primaryKey:
+      - id
+  refreshInterval: 0 10 31 2 1
 transformation:
   - isDynamic: true
-    alias: Sagemaker_1
-    description: test
+    alias: Spark_SQL_1
+    description: str_to_date
     sequence: 2
-    pipelineName: ""
+    inputDataFrameList:
+      - inputDataFrame: gcp_read_csv_Mansi_1
+        tempViewName: temp
+    query: SELECT *,cast(modified AS date) as modified2 FROM temp;
     optional:
       persistDataFrame: false
-    type: customAWSSagemaker
-    inputDataFrame: gcp_read_csv_Mansi_1
+    type: operationThroughSqlQuery
 controlPort:
   dataQualityRules: {}
-timeout: 5
+outputPort:
+  subscriptionChannels:
+    - channelType: Postgres
+      queryType: SQL
+    - channelType: Dataproduct
+      queryType: SQL
