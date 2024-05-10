@@ -17,7 +17,7 @@ inputPorts:
       enableDataReconciliation: false
       enforceSchema: false
       connection: mansi_gcp_dummy
-      dataSetUrn: urn:dv:dataset:7dd6d6aa-4f56-4a6a-a558-b227ba5ad7c2
+      dataSetUrn: urn:dv:dataproduct:17636fb8-2dd9-4d6c-bc7f-bc60e24e61c0
     type: inputDelimited
 productState:
   isDynamic: true
