@@ -36,7 +36,25 @@ productState:
   retentionVersions: ""
   logicalSchema:
     properties:
-      a:
+      City:
+        type: STRING
+        description: ""
+      Region:
+        type: STRING
+        description: ""
+      Country:
+        type: STRING
+        description: ""
+      Latitude:
+        type: STRING
+        description: ""
+      Longitude:
+        type: STRING
+        description: ""
+      Timezone:
+        type: STRING
+        description: ""
+      Local Time:
         type: STRING
         description: ""
   enforceSchemaMethod: ""
