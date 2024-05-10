@@ -1,65 +1,65 @@
-version: 0.0.2
-jobId: "742"
-jobName: adp_redshift_vishnu__5
-jobType: Aggregated Data Product
+version: 0.0.3
+jobId: "493"
+jobName: read_csv_pyspark_redshift_sadp
+jobType: Source Aligned Data Product
 domain: sale
-alias: write_redshift__003_05
+alias: redshift_state_mgnt1_34
 discoveryPort:
-  name: adp_redshift_vishnu__4
+  name: read_csv_pyspark_redshift_sadp_Vishnu_23
 inputPorts:
-  - alias: sadp_csv_sql_redshift_vishnu__2_7
+  - alias: read_csv_generic_1
     isDynamic: true
-    dataProductUrn: urn:dv:dataproduct:ca98b960-1e33-435e-ac33-abd7889b5aab
-    filter: ""
-    projection: ""
+    path: s3://byte-etl-externaldemo/University_Admsn_Data/csv_files/university_admission.csv
     optional:
       persistDataFrame: false
-      jsonSchema: '{"s":"string"}'
-    type: dataproduct
-  - alias: sadp_csv_sql_redshift_vishnu__6_1
-    isDynamic: true
-    dataProductUrn: urn:dv:dataproduct:ab087632-b7c0-427d-8524-10dd3e77d2c1
-    filter: ""
-    projection: ""
-    optional:
-      persistDataFrame: false
-      jsonSchema: '{"s":"string"}'
-    type: dataproduct
+      advanceOptions:
+        delimiter: ","
+      enableDataReconciliation: false
+      enforceSchema: false
+      connection: read_csv_s3_conn
+      dataSetUrn: urn:dv:dataset:b2f5c90b-bc84-4569-9832-14b439a0624c
+    type: inputDelimited
 productState:
-  isDynamic: true
-  alias: write_redshift__003
+  persistDataFrame: false
+  enableDataReconciliation: false
+  enforceSchema: false
+  stepName: redshift_state_mgnt1
+  connection: temp_redshift
+  query: select * from public.byte_etl_library_redshift_test_new
+  endPoint: s3.us-east-1.amazonaws.com
+  temporaryPathS3: s3://bp-spark-sql-library-test-acc/testRedshiftUpload1/
+  type: readRedshiftTableByQuery
+  isStateManagement: true
+  sequence: 3
+  alias: redshift_state_mgnt1
+  refreshInterval: None
   retentionVersions: ""
   logicalSchema:
     properties:
-      s:
+      a:
         type: STRING
         description: ""
-  stateStoreType: writeDataFrameToRedshiftTable
+  enforceSchemaMethod: ""
   isProfilingEnabled: false
-  updateStrategy: ""
-  connection: temp_redshift
-  tableName: public.byte_etl_library_redshift_test_new
-  endPoint: s3.us-east-1.amazonaws.com
-  temporaryPathS3: s3://bp-spark-sql-library-test-acc/testRedshiftUpload1/
-  optional:
-    persistDataFrame: false
-    addRunIdColumn: false
-    enableDataReconciliation: false
-    enforceSchema: false
-  refreshInterval: None
 transformation:
   - isDynamic: true
-    alias: Spark_SQL_1
-    description: spark_sql__3
-    sequence: 3
+    alias: EMR_PySpark_1
+    description: RunningPySparkJob
+    sequence: 2
+    arguments:
+      - s3://byte-etl-externaldemo/University_Admsn_Data/csv_files/university_admission.csv
+    pythonFilePath: s3://byte-etl-externaldemo/University_Admsn_Data/test.py
     inputDataFrameList:
-      - inputDataFrame: sadp_csv_sql_redshift_vishnu__2_1
-        tempViewName: Temp
-      - inputDataFrame: sadp_csv_sql_redshift_vishnu__6_1
-        tempViewName: Temp
-    query: SELECT * FROM Temp limit 5;
+      - inputDataFrame: ""
+        tempViewName: ""
     optional:
-      persistDataFrame: false
-    type: operationThroughSqlQuery
+      pythonEnvTarGZPath: s3://byte-etl-externaldemo/University_Admsn_Data/pyspark_venv.tar.gz
+    type: customPySparkEMRServerless
 controlPort:
   dataQualityRules: {}
+outputPort:
+  subscriptionChannels:
+    - channelType: Postgres
+      queryType: SQL
+    - channelType: Dataproduct
+      queryType: SQL
