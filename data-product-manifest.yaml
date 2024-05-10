@@ -1,66 +1,65 @@
-version: 0.0.8
-jobId: "394"
-jobName: Test_iceberg_biglake_SCD1_Mansi
-jobType: Source Aligned Data Product
-domain: operation
-alias: Write_ice7_34
+version: 0.0.2
+jobId: "742"
+jobName: adp_redshift_vishnu__5
+jobType: Aggregated Data Product
+domain: sale
+alias: write_redshift__003_05
 discoveryPort:
-  name: Test_iceberg_biglake_SCD1_Mansi7_34
+  name: adp_redshift_vishnu__4
 inputPorts:
-  - alias: gcp_read_csv_Mansi_1_34
+  - alias: sadp_csv_sql_redshift_vishnu__2_7
     isDynamic: true
-    path: gs://dabur_poc_inutdata/scd1_testing_csv/incr_1.csv
+    dataProductUrn: urn:dv:dataproduct:ca98b960-1e33-435e-ac33-abd7889b5aab
+    filter: ""
+    projection: ""
     optional:
       persistDataFrame: false
-      advanceOptions:
-        delimiter: ","
-      enableDataReconciliation: false
-      enforceSchema: false
-      connection: mansi_gcp_dummy
-      dataSetUrn: urn:dv:dataproduct:17636fb8-2dd9-4d6c-bc7f-bc60e24e61c0
-    type: inputDelimited
+      jsonSchema: '{"s":"string"}'
+    type: dataproduct
+  - alias: sadp_csv_sql_redshift_vishnu__6_1
+    isDynamic: true
+    dataProductUrn: urn:dv:dataproduct:ab087632-b7c0-427d-8524-10dd3e77d2c1
+    filter: ""
+    projection: ""
+    optional:
+      persistDataFrame: false
+      jsonSchema: '{"s":"string"}'
+    type: dataproduct
 productState:
   isDynamic: true
-  alias: Write_ice
+  alias: write_redshift__003
   retentionVersions: ""
   logicalSchema:
     properties:
-      city: STRING
-  stateStoreType: loadDataIceberg
+      s:
+        type: STRING
+        description: ""
+  stateStoreType: writeDataFrameToRedshiftTable
   isProfilingEnabled: false
-  updateStrategy: SCD1
-  tableName: iceberg_db.scd1_data
-  warehousePath: gs://dabur_poc_inutdata/iceberg_warehouse/
-  catalogName: random_catalog
+  updateStrategy: ""
+  connection: temp_redshift
+  tableName: public.byte_etl_library_redshift_test_new
+  endPoint: s3.us-east-1.amazonaws.com
+  temporaryPathS3: s3://bp-spark-sql-library-test-acc/testRedshiftUpload1/
   optional:
     persistDataFrame: false
+    addRunIdColumn: false
     enableDataReconciliation: false
     enforceSchema: false
-    enforceSchemaMethod: Warning
-    catalogType: biglake
-    changeTrackingColumns:
-      - value
-    timestampColumn: modified2
-    primaryKey:
-      - id
-  refreshInterval: 0 10 31 2 1
+  refreshInterval: None
 transformation:
   - isDynamic: true
     alias: Spark_SQL_1
-    description: str_to_date
-    sequence: 2
+    description: spark_sql__3
+    sequence: 3
     inputDataFrameList:
-      - inputDataFrame: gcp_read_csv_Mansi_1
-        tempViewName: temp
-    query: SELECT *,cast(modified AS date) as modified2 FROM temp;
+      - inputDataFrame: sadp_csv_sql_redshift_vishnu__2_1
+        tempViewName: Temp
+      - inputDataFrame: sadp_csv_sql_redshift_vishnu__6_1
+        tempViewName: Temp
+    query: SELECT * FROM Temp limit 5;
     optional:
       persistDataFrame: false
     type: operationThroughSqlQuery
 controlPort:
   dataQualityRules: {}
-outputPort:
-  subscriptionChannels:
-    - channelType: Postgres
-      queryType: SQL
-    - channelType: Dataproduct
-      queryType: SQL
