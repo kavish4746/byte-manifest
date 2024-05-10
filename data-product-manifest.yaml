@@ -25,7 +25,9 @@ productState:
   retentionVersions: ""
   logicalSchema:
     properties:
-      city: STRING
+      s:
+        type: STRING
+        description: ""
   stateStoreType: loadDataIceberg
   isProfilingEnabled: false
   updateStrategy: SCD1
