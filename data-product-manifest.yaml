@@ -3,11 +3,11 @@ jobId: "493"
 jobName: read_csv_pyspark_redshift_sadp
 jobType: Source Aligned Data Product
 domain: sale
-alias: redshift_state_mgnt1_34
+alias: redshift_state_mgnt1_36
 discoveryPort:
-  name: read_csv_pyspark_redshift_sadp_Vishnu_23
+  name: read_csv_pyspark_redshift_sadp_Vishnu_26
 inputPorts:
-  - alias: read_csv_generic_1
+  - alias: read_csv_generic_2
     isDynamic: true
     path: s3://byte-etl-externaldemo/University_Admsn_Data/csv_files/university_admission.csv
     optional:
