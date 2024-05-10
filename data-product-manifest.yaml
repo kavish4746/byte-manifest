@@ -1,78 +1,61 @@
-version: 0.0.3
-jobId: "493"
-jobName: read_csv_pyspark_redshift_sadp
+version: 0.0.8
+jobId: "394"
+jobName: Test_iceberg_biglake_SCD1_Mansi
 jobType: Source Aligned Data Product
-domain: sale
-alias: redshift_state_mgnt1_36
+domain: operation
+alias: Write_ice7
 discoveryPort:
-  name: read_csv_pyspark_redshift_sadp_Vishnu_26
+  name: Test_iceberg_biglake_SCD1_Mansi7
 inputPorts:
-  - alias: read_csv_generic_2
+  - alias: gcp_read_csv_Mansi_1
     isDynamic: true
-    path: s3://byte-etl-externaldemo/University_Admsn_Data/csv_files/university_admission.csv
+    path: gs://dabur_poc_inutdata/scd1_testing_csv/incr_1.csv
     optional:
       persistDataFrame: false
       advanceOptions:
         delimiter: ","
       enableDataReconciliation: false
       enforceSchema: false
-      connection: read_csv_s3_conn
+      connection: mansi_gcp_dummy
       dataSetUrn: urn:dv:dataset:9e45f6b1-cac8-45d8-a09d-169e6326b101
     type: inputDelimited
 productState:
-  persistDataFrame: false
-  enableDataReconciliation: false
-  enforceSchema: false
-  stepName: redshift_state_mgnt1
-  connection: temp_redshift
-  query: select * from public.byte_etl_library_redshift_test_new
-  endPoint: s3.us-east-1.amazonaws.com
-  temporaryPathS3: s3://bp-spark-sql-library-test-acc/testRedshiftUpload1/
-  type: readRedshiftTableByQuery
-  isStateManagement: true
-  sequence: 3
-  alias: redshift_state_mgnt1
-  refreshInterval: None
+  isDynamic: true
+  alias: Write_ice
   retentionVersions: ""
   logicalSchema:
     properties:
-      City:
-        type: STRING
-        description: ""
-      Region:
-        type: STRING
-        description: ""
-      Country:
-        type: STRING
-        description: ""
-      Latitude:
-        type: STRING
-        description: ""
-      Longitude:
-        type: STRING
-        description: ""
-      Timezone:
-        type: STRING
-        description: ""
-      Local Time:
-        type: STRING
-        description: ""
-  enforceSchemaMethod: ""
+      city: STRING
+  stateStoreType: loadDataIceberg
   isProfilingEnabled: false
+  updateStrategy: SCD1
+  tableName: iceberg_db.scd1_data
+  warehousePath: gs://dabur_poc_inutdata/iceberg_warehouse/
+  catalogName: random_catalog
+  optional:
+    persistDataFrame: false
+    enableDataReconciliation: false
+    enforceSchema: false
+    enforceSchemaMethod: Warning
+    catalogType: biglake
+    changeTrackingColumns:
+      - value
+    timestampColumn: modified2
+    primaryKey:
+      - id
+  refreshInterval: 0 10 31 2 1
 transformation:
   - isDynamic: true
-    alias: EMR_PySpark_1
-    description: RunningPySparkJob
+    alias: Spark_SQL_1
+    description: str_to_date
     sequence: 2
-    arguments:
-      - s3://byte-etl-externaldemo/University_Admsn_Data/csv_files/university_admission.csv
-    pythonFilePath: s3://byte-etl-externaldemo/University_Admsn_Data/test.py
     inputDataFrameList:
-      - inputDataFrame: ""
-        tempViewName: ""
+      - inputDataFrame: gcp_read_csv_Mansi_1
+        tempViewName: temp
+    query: SELECT *,cast(modified AS date) as modified2 FROM temp;
     optional:
-      pythonEnvTarGZPath: s3://byte-etl-externaldemo/University_Admsn_Data/pyspark_venv.tar.gz
-    type: customPySparkEMRServerless
+      persistDataFrame: false
+    type: operationThroughSqlQuery
 controlPort:
   dataQualityRules: {}
 outputPort:
