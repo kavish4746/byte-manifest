@@ -17,7 +17,7 @@ inputPorts:
       enableDataReconciliation: false
       enforceSchema: false
       connection: read_csv_s3_conn
-      dataSetUrn: urn:dv:dataset:b2f5c90b-bc84-4569-9832-14b439a0624c
+      dataSetUrn: urn:dv:dataset:9e45f6b1-cac8-45d8-a09d-169e6326b101
     type: inputDelimited
 productState:
   persistDataFrame: false
