@@ -4,7 +4,7 @@ jobName: Test_aneree_15
 jobType: Source Aligned Data Product
 userId: a421c8d2-ced6-4227-993e-04155a8feb50
 domain: finance
-alias: ""
+alias: "test_developby_fun"
 discoveryPort:
   name: Test_aneree_15
 inputPorts:
@@ -30,7 +30,29 @@ productState:
   alias: ""
   refreshInterval: 5 * * 2 5
   retentionVersions: ""
-  logicalSchema: ""
+  logicalSchema:
+    properties:
+      City:
+        type: STRING
+        description: ""
+      Region:
+        type: STRING
+        description: ""
+      Country:
+        type: STRING
+        description: ""
+      Latitude:
+        type: STRING
+        description: ""
+      Longitude:
+        type: STRING
+        description: ""
+      Timezone:
+        type: STRING
+        description: ""
+      Local Time:
+        type: STRING
+        description: ""
   enforceSchemaMethod: ""
   isProfilingEnabled: false
 transformation:
