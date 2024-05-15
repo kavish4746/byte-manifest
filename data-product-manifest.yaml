@@ -1,7 +1,8 @@
-version: 0.0.2
+version: 0.0.3
 jobId: "798"
 jobName: sadp_op_15th
 jobType: Source Aligned Data Product
+userId: a7213db3-af1d-4810-ac21-e49160b82291
 requestDataproductID: 7938a04d-4a04-457e-ac34-e0bd54017487
 domain: operation
 alias: ""
