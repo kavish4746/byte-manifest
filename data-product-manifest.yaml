@@ -1,12 +1,12 @@
-version: 0.0.1
+version: 0.0.2
 jobId: "799"
 jobName: Test_aneree_15
 jobType: Source Aligned Data Product
 userId: a421c8d2-ced6-4227-993e-04155a8feb50
 domain: finance
-alias: "test_developby_fun"
+alias: "test_developby_fun_1"
 discoveryPort:
-  name: Test_aneree_15
+  name: Test_aneree_16
 inputPorts:
   - alias: Postgre_Load_check_-_SADP_1
     isDynamic: true
