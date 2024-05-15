@@ -1,17 +1,16 @@
-version: 0.0.3
-jobId: "798"
-jobName: sadp_op_15th
+version: 0.0.1
+jobId: "799"
+jobName: Test_aneree_15
 jobType: Source Aligned Data Product
-userId: a7213db3-af1d-4810-ac21-e49160b82291
-requestDataproductID: 7938a04d-4a04-457e-ac34-e0bd54017487
-domain: operation
+userId: a421c8d2-ced6-4227-993e-04155a8feb50
+domain: finance
 alias: ""
 discoveryPort:
-  name: sadp_op_15th
+  name: Test_aneree_15
 inputPorts:
-  - alias: SADP_Weather_TR_1
+  - alias: Postgre_Load_check_-_SADP_1
     isDynamic: true
-    dataProductUrn: urn:dv:dataproduct:f0962a37-ae65-444c-9ed7-7719ce9cb1d2
+    dataProductUrn: urn:dv:dataproduct:fe575454-cf3a-41a7-a4d5-afc8650095bd
     filter: ""
     projection: ""
     optional:
@@ -21,16 +20,15 @@ productState:
   persistDataFrame: false
   catalogType: glue
   enforceSchema: false
-  connection: read_csv_s3_conn
   stepName: ""
-  tableName: test_kavish
+  tableName: ""
   warehousePath: ""
-  catalogName: test_catalog
+  catalogName: ""
   type: readDataIceberg
   isStateManagement: true
   sequence: 3
   alias: ""
-  refreshInterval: 5 * 5 2 *
+  refreshInterval: 5 * * 2 5
   retentionVersions: ""
   logicalSchema: ""
   enforceSchemaMethod: ""
@@ -38,13 +36,12 @@ productState:
 transformation:
   - isDynamic: true
     alias: Sagemaker_1
-    description: test_step
+    description: ""
     sequence: 2
-    pipelineName: test_pipeline
+    pipelineName: ""
     optional:
       persistDataFrame: false
     type: customAWSSagemaker
-    inputDataFrame: SADP_Weather_TR_1
+    inputDataFrame: Postgre_Load_check_-_SADP_1
 controlPort:
   dataQualityRules: {}
-timeout: 5
