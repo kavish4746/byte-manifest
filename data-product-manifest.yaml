@@ -1,72 +1,49 @@
-version: 0.0.15
-jobId: "685"
-jobName: Mari navi product - Miloni
+version: 0.0.1
+jobId: "798"
+jobName: sadp_op_15th
 jobType: Source Aligned Data Product
-domain: sale
-alias: write_to_iceberg_consumptions_15
+requestDataproductID: 7938a04d-4a04-457e-ac34-e0bd54017487
+domain: operation
+alias: ""
 discoveryPort:
-  name: Mari navi product - Miloni_15
+  name: sadp_op_15th
 inputPorts:
-  - alias: Test_Consumption_-_miloni_15
+  - alias: SADP_Weather_TR_1
     isDynamic: true
-    dataProductUrn: urn:dv:dataproduct:1b454d55-c967-42c3-a391-c8ef98212973
+    dataProductUrn: urn:dv:dataproduct:f0962a37-ae65-444c-9ed7-7719ce9cb1d2
     filter: ""
     projection: ""
     optional:
       persistDataFrame: false
     type: dataproduct
 productState:
-  isDynamic: true
-  alias: write_to_iceberg_consumptions_5
+  persistDataFrame: false
+  catalogType: glue
+  enforceSchema: false
+  connection: read_csv_s3_conn
+  stepName: ""
+  tableName: test_kavish
+  warehousePath: ""
+  catalogName: test_catalog
+  type: readDataIceberg
+  isStateManagement: true
+  sequence: 3
+  alias: ""
+  refreshInterval: 5 * 5 2 *
   retentionVersions: ""
-  logicalSchema:
-    properties:
-      id:
-        type: STRING
-        description: ""
-      name:
-        type: STRING
-        description: ""
-  stateStoreType: loadDataIceberg
+  logicalSchema: ""
+  enforceSchemaMethod: ""
   isProfilingEnabled: false
-  updateStrategy: Overwrite
-  tableName: s3Source.sadp_anokhi
-  warehousePath: s3://bp-spark-sql-library-test-acc/
-  catalogName: glue
-  optional:
-    persistDataFrame: false
-    enableDataReconciliation: false
-    enforceSchema: false
-    enforceSchemaMethod: Warning
-    catalogType: glue
-  refreshInterval: None
 transformation:
   - isDynamic: true
-    alias: Spark_SQL_1
-    description: Transform ADP
-    sequence: 9
-    inputDataFrameList:
-      - inputDataFrame: Line_Defects_and_Rejections_1
-        tempViewName: Line_Defects_and_Rejections_1
-      - inputDataFrame: SMG_SMC_Defect_1
-        tempViewName: SMG_SMC_Defect_1
-      - inputDataFrame: Parts_Quality_Vehicle_Data_1
-        tempViewName: Parts_Quality_Vehicle_Data
-      - inputDataFrame: Production_Transaction_Summary_1
-        tempViewName: Production_Transaction_Summary_1
-      - inputDataFrame: Vendor_Master_2
-        tempViewName: Vendor_Master_1
-      - inputDataFrame: ReceivingVoucherRequest_1
-        tempViewName: ReceivingVoucherRequest_1
-      - inputDataFrame: Change_Request_1
-        tempViewName: Change_Request_1
-      - inputDataFrame: Regulatory_Marking_Checks_Master_1
-        tempViewName: sysmar_picparts_dedup
-      - inputDataFrame: QAQD_RPAM_CURATED_1
-        tempViewName: QAQD_RPAM_DEDUP
-    query: select * from temp
+    alias: Sagemaker_1
+    description: test_step
+    sequence: 2
+    pipelineName: test_pipeline
     optional:
       persistDataFrame: false
-    type: operationThroughSqlQuery
+    type: customAWSSagemaker
+    inputDataFrame: SADP_Weather_TR_1
 controlPort:
   dataQualityRules: {}
+timeout: 5
