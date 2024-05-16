@@ -1,12 +1,12 @@
-version: 0.0.12
+version: 0.0.2
 jobId: "799"
 jobName: Test_aneree_15
 jobType: Source Aligned Data Product
-userId: a421c8d2-ced6-4227-993e-04155a8feb50
+developerId: a421c8d2-ced6-4227-993e-04155a8feb50
 domain: finance
-alias: "test_developby_fun_1"
+alias: ""
 discoveryPort:
-  name: Test_aneree_16
+  name: Test_aneree_15
 inputPorts:
   - alias: Postgre_Load_check_-_SADP_1
     isDynamic: true
@@ -30,29 +30,7 @@ productState:
   alias: ""
   refreshInterval: 5 * * 2 5
   retentionVersions: ""
-  logicalSchema:
-    properties:
-      City:
-        type: STRING
-        description: ""
-      Region:
-        type: STRING
-        description: ""
-      Country:
-        type: STRING
-        description: ""
-      Latitude:
-        type: STRING
-        description: ""
-      Longitude:
-        type: STRING
-        description: ""
-      Timezone:
-        type: STRING
-        description: ""
-      Local Time:
-        type: STRING
-        description: ""
+  logicalSchema: ""
   enforceSchemaMethod: ""
   isProfilingEnabled: false
 transformation:
