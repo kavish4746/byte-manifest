@@ -4,7 +4,7 @@ jobName: test_sadp_16
 jobType: Source Aligned Data Product
 developerId: a7213db3-af1d-4810-ac21-e49160b82291
 domain: marketing
-alias: ""
+alias: "test_sadp_16_1"
 discoveryPort:
   name: test_sadp_16
 inputPorts:
@@ -30,7 +30,29 @@ productState:
   alias: ""
   refreshInterval: "5 * * 6 * "
   retentionVersions: ""
-  logicalSchema: ""
+  logicalSchema:
+    properties:
+      City:
+        type: STRING
+        description: ""
+      Region:
+        type: STRING
+        description: ""
+      Country:
+        type: STRING
+        description: ""
+      Latitude:
+        type: STRING
+        description: ""
+      Longitude:
+        type: STRING
+        description: ""
+      Timezone:
+        type: STRING
+        description: ""
+      Local Time:
+        type: STRING
+        description: ""
   enforceSchemaMethod: ""
   isProfilingEnabled: false
 transformation:
