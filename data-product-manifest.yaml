@@ -1,51 +1,47 @@
-version: 0.0.21
-jobId: "587"
-jobName: Oracle DP
+version: 0.0.1
+jobId: "802"
+jobName: test_aneree_17
 jobType: Source Aligned Data Product
-domain: hr
-alias: load_data_to_oracle_sadp_19_11_2
+developerId: a421c8d2-ced6-4227-993e-04155a8feb50
+domain: finance
+alias: ""
 discoveryPort:
-  name: oracle_sadp_19_11_2
+  name: test_aneree_17
 inputPorts:
-  - alias: Oracle_Data_Set_Existing_11_2
+  - alias: Weather_Logistic_Regression_DP_1
     isDynamic: true
-    connection: Oracle Data Connection Existing
-    tableName/query: byte-etl-test.NEWTABLE
+    dataProductUrn: urn:dv:dataproduct:43e16f23-29a7-4c6d-b76b-213ba93b5121
+    filter: ""
+    projection: ""
     optional:
       persistDataFrame: false
-      enableDataReconciliation: false
-      enforceSchema: false
-      dataSetUrn: urn:dv:dataset:a449a8da-f182-4741-8bc8-7d336b431d82
-    type: readOracleDbUsingJdbc
+    type: dataproduct
 productState:
-  isDynamic: true
-  alias: load_data_to_oracle_sadp
+  persistDataFrame: false
+  catalogType: glue
+  enforceSchema: false
+  stepName: ""
+  tableName: ""
+  warehousePath: ""
+  catalogName: ""
+  type: readDataIceberg
+  isStateManagement: true
+  sequence: 3
+  alias: ""
+  refreshInterval: 2 * * 4 5
   retentionVersions: ""
-  logicalSchema:
-    properties:
-      name:
-        type: STRING
-        description: ""
-  stateStoreType: writeDataFrameToOracleTable
+  logicalSchema: ""
+  enforceSchemaMethod: ""
   isProfilingEnabled: false
-  updateStrategy: Overwrite
-  connection: Oracle Data Connection Existing
-  tableName: '"byte-etl-test".NEWTABLE_ANEREE'
-  optional:
-    persistDataFrame: false
-    enableDataReconciliation: false
-    enforceSchema: false
-  refreshInterval: 0 10 31 2 1
 transformation:
   - isDynamic: true
-    alias: Select_Columns_1
-    description: select a column
+    alias: Sagemaker_1
+    description: ""
     sequence: 2
-    inputDataFrame: Oracle_Data_Set_Existing_1
-    columns:
-      - name
+    pipelineName: ""
     optional:
       persistDataFrame: false
-    type: selectColumns
+    type: customAWSSagemaker
+    inputDataFrame: Weather_Logistic_Regression_DP_1
 controlPort:
   dataQualityRules: {}
