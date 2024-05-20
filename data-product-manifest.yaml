@@ -10,7 +10,7 @@ discoveryPort:
 inputPorts:
   - alias: Weather_Logistic_Regression_DP_1
     isDynamic: true
-    dataProductUrn: urn:dv:dataproduct:d32833f4-55f0-48d0-b428-8f4324756f74
+    dataProductUrn: urn:dv:dataproduct:17636fb8-2dd9-4d6c-bc7f-bc60e24e61c0
     filter: ""
     projection: ""
     optional:
