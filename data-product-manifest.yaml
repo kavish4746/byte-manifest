@@ -1,16 +1,16 @@
 version: 0.0.1
 jobId: "802"
-jobName: test_aneree_17
+jobName: test_aneree_17_2
 jobType: Source Aligned Data Product
 developerId: a421c8d2-ced6-4227-993e-04155a8feb50
 domain: finance
-alias: "test_aneree_17_1"
+alias: "test_aneree_17_2"
 discoveryPort:
-  name: test_aneree_17
+  name: test_aneree_17_3
 inputPorts:
   - alias: Weather_Logistic_Regression_DP_1
     isDynamic: true
-    dataProductUrn: urn:dv:dataproduct:08f199b9-e8ff-4f18-a0fb-76ee3b9314c8
+    dataProductUrn: urn:dv:dataproduct:1211ab78-b079-436e-98be-2fa17eb8fd0f
     filter: ""
     projection: ""
     optional:
