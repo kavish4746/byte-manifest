@@ -1,4 +1,4 @@
-version: 0.0.8
+version: 0.0.9
 jobId: "394"
 jobName: Test_iceberg_biglake_SCD1
 jobType: Source Aligned Data Product
