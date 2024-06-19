@@ -1,66 +1,61 @@
-version: 0.0.9
-jobId: "394"
-jobName: Test_iceberg_biglake_SCD1
+version: 0.0.2
+jobId: "891"
+jobName: Weather Data - 2024 copy
 jobType: Source Aligned Data Product
-domain: operation
-alias: Write_ice7
+developerId: a7213db3-af1d-4810-ac21-e49160b82291
+domain: sale
+alias: Step_2_
 discoveryPort:
-  name: Test_iceberg_biglake_SCD1
+  name: Weather Data - 2024 copy
 inputPorts:
-  - alias: gcp_read_csv
+  - alias: Weather_Data_1
     isDynamic: true
-    path: gs://dabur_poc_inutdata/scd1_testing_csv/incr_1.csv
+    path: s3://byte-etl-externaldemo/weather_data/2024*.csv
     optional:
       persistDataFrame: false
       advanceOptions:
         delimiter: ","
       enableDataReconciliation: false
       enforceSchema: false
-      connection: mansi_gcp_dummy
-      dataSetUrn: urn:dv:dataset:fa3dfb93-b4cd-4ef4-bc0c-1ccf34ec26f5
+      connection: Base S3 Connectivity
+      dataSetUrn: urn:dv:dataset:3420b778-058c-4158-9c1f-f141913edd2a
     type: inputDelimited
 productState:
   isDynamic: true
-  alias: Write_ice
+  alias: Step_2_
   retentionVersions: ""
   logicalSchema:
     properties:
-      city: STRING
+      city:
+        type: STRING
+        description: ""
+      region:
+        type: STRING
+        description: ""
   stateStoreType: loadDataIceberg
   isProfilingEnabled: false
-  updateStrategy: SCD1
-  tableName: iceberg_db.scd1_data
-  warehousePath: gs://dabur_poc_inutdata/iceberg_warehouse/
-  catalogName: random_catalog
+  updateStrategy: Overwrite
+  tableName: s3source.weather_data_2024
+  warehousePath: s3://byteverse-dev-sale/SADP/
+  catalogName: glue
   optional:
     persistDataFrame: false
     enableDataReconciliation: false
     enforceSchema: false
     enforceSchemaMethod: Warning
-    catalogType: biglake
-    changeTrackingColumns:
-      - value
-    timestampColumn: modified2
-    primaryKey:
-      - id
-  refreshInterval: 0 10 31 2 1
+    catalogType: glue
+  refreshInterval: 0 14 * * *
 transformation:
   - isDynamic: true
     alias: Spark_SQL_1
-    description: str_to_date
+    description: Step 1
     sequence: 2
     inputDataFrameList:
-      - inputDataFrame: gcp_read_csv_Mansi_1
-        tempViewName: temp
-    query: SELECT *,cast(modified AS date) as modified2 FROM temp;
+      - inputDataFrame: Weather_Data_1
+        tempViewName: df
+    query: select * from df;
     optional:
       persistDataFrame: false
     type: operationThroughSqlQuery
 controlPort:
   dataQualityRules: {}
-outputPort:
-  subscriptionChannels:
-    - channelType: Postgres
-      queryType: SQL
-    - channelType: Dataproduct
-      queryType: SQL
