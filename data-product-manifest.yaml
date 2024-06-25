@@ -1,10 +1,10 @@
-version: 0.0.1
+version: 0.0.2
 jobId: "917"
 jobName: Sales Gen AI Dummy copy copy
 jobType: Source Aligned Data Product
 developerId: a7213db3-af1d-4810-ac21-e49160b82291
 domain: finance
-alias: write_to_updated_sales_test_kavish_1
+alias: write_to_updated_sales_test_kavish_12
 discoveryPort:
   name: Sales Gen AI Dummy copy copy
 inputPorts:
@@ -22,7 +22,7 @@ inputPorts:
     type: inputParquet
 productState:
   isDynamic: true
-  alias: write_to_updated_sales_test_kavish_1
+  alias: write_to_updated_sales_test_kavish_12
   retentionVersions: ""
   logicalSchema:
     properties:
@@ -267,12 +267,12 @@ productState:
 transformation:
   - isDynamic: true
     alias: Spark_SQL_1
-    description: data source spark kavish 1
+    description: data source spark kavish 4
     sequence: 2
     inputDataFrameList:
       - inputDataFrame: Secondary_Sales_1
-        tempViewName: sales_updated_new
-    query: Select * from sales_updated_new
+        tempViewName: sales_updated_new_4
+    query: Select * from sales_updated_new_4
     optional:
       persistDataFrame: false
     type: operationThroughSqlQuery
