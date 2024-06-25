@@ -1,12 +1,12 @@
 version: 0.0.1
-jobId: "907"
-jobName: Sales Gen AI copy
+jobId: "910"
+jobName: Sales Gen AI Dummy copy
 jobType: Source Aligned Data Product
 developerId: a7213db3-af1d-4810-ac21-e49160b82291
 domain: finance
-alias: write_to_denorm_sales_test_1
+alias: write_to_updated_sales_test_1
 discoveryPort:
-  name: Sales Gen AI copy
+  name: Sales Gen AI Dummy copy
 inputPorts:
   - alias: Secondary_Sales_1
     isDynamic: true
@@ -22,7 +22,7 @@ inputPorts:
     type: inputParquet
 productState:
   isDynamic: true
-  alias: write_to_denorm_sales_test_1
+  alias: write_to_updated_sales_test_1
   retentionVersions: ""
   logicalSchema:
     properties:
@@ -254,7 +254,7 @@ productState:
   stateStoreType: loadDataIceberg
   isProfilingEnabled: false
   updateStrategy: Overwrite
-  tableName: s3source.ayush_sales_gen_test_3
+  tableName: s3source.dummy_sales_test_1
   warehousePath: s3://bp-spark-sql-library-test-acc/
   catalogName: glue
   optional:
@@ -267,14 +267,12 @@ productState:
 transformation:
   - isDynamic: true
     alias: Spark_SQL_1
-    description: transform data source spark 2
+    description: data source spark_1
     sequence: 2
     inputDataFrameList:
       - inputDataFrame: Secondary_Sales_1
-        tempViewName: sales_new_update
-    query: SELECT *,cast(SFAORDATE AS date) as SFAORDATE2,cast(SFALAT AS double) as
-      SFALAT2,cast(SFALNG AS float) as SFALNG2,cast(ProductId AS long) as
-      ProductId_new FROM sales_new_update LIMIT 1000;
+        tempViewName: sales_updated_new_1
+    query: Select * from sales_updated_new
     optional:
       persistDataFrame: false
     type: operationThroughSqlQuery
