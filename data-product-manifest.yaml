@@ -1,12 +1,12 @@
 version: 0.0.2
-jobId: "936"
-jobName: Secondary Sales Details kavish Publish copy
+jobId: "953"
+jobName: Sales_Update_kavish
 jobType: Source Aligned Data Product
 developerId: a7213db3-af1d-4810-ac21-e49160b82291
 domain: sale
-alias: write_to_denorm_sales_developer
+alias: write_to_updated_sales_test_new_discovery_test
 discoveryPort:
-  name: Secondary Sales Details kavish Publish copy
+  name: Sales_Update_kavish
 inputPorts:
   - alias: Secondary_Sales_1
     isDynamic: true
@@ -22,28 +22,10 @@ inputPorts:
     type: inputParquet
 productState:
   isDynamic: true
-  alias: write_to_denorm_sales_developer
+  alias: write_to_updated_sales_test_new_discovery_test
   retentionVersions: ""
   logicalSchema:
     properties:
-      region:
-        type: STRING
-        description: ""
-      zsmcode:
-        type: STRING
-        description: ""
-      zsmname:
-        type: STRING
-        description: ""
-      ahcode:
-        type: STRING
-        description: ""
-      ahname:
-        type: STRING
-        description: ""
-      asmcode:
-        type: STRING
-        description: ""
       asmname:
         type: STRING
         description: ""
@@ -253,8 +235,8 @@ productState:
         description: ""
   stateStoreType: loadDataIceberg
   isProfilingEnabled: false
-  updateStrategy: Append
-  tableName: s3source.ayush_sales_gen_developer
+  updateStrategy: Overwrite
+  tableName: s3source.dummy_sales_test_update
   warehousePath: s3://bp-spark-sql-library-test-acc/
   catalogName: glue
   optional:
@@ -267,14 +249,12 @@ productState:
 transformation:
   - isDynamic: true
     alias: Spark_SQL_1
-    description: transform data source into developer
+    description: data source spark kavish test updated discovery test
     sequence: 2
     inputDataFrameList:
       - inputDataFrame: Secondary_Sales_1
-        tempViewName: sales_new_test_sample_qa
-    query: SELECT *,cast(SFAORDATE AS date) as SFAORDATE2,cast(SFALAT AS double) as
-      SFALAT2,cast(SFALNG AS float) as SFALNG2,cast(ProductId AS long) as
-      ProductId_new FROM sales_new_test_sample_qa LIMIT 1000;
+        tempViewName: sales_updated_new_12
+    query: Select * from sales_updated_new_12
     optional:
       persistDataFrame: false
     type: operationThroughSqlQuery
