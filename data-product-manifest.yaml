@@ -1,4 +1,4 @@
-version: 0.0.1
+version: 0.0.2
 jobId: "1088"
 jobName: Bug_Active_DP
 jobType: Source Aligned Data Product
@@ -24,7 +24,11 @@ productState:
   isDynamic: true
   alias: activebugtest1
   retentionVersions: ""
-  logicalSchema: ""
+  logicalSchema:
+    properties:
+      S:
+        type: STRING
+        description: ""
   stateStoreType: loadDataIceberg
   isProfilingEnabled: false
   updateStrategy: Overwrite
@@ -34,7 +38,7 @@ productState:
   optional:
     persistDataFrame: false
     enableDataReconciliation: false
-    enforceSchema: true
+    enforceSchema: false
     enforceSchemaMethod: Warning
     catalogType: glue
   refreshInterval: None
