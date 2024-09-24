@@ -1,68 +1,54 @@
-version: 0.0.8
-jobId: "394"
-jobName: Test_iceberg_biglake_SCD1_Mansi
+version: 0.0.1
+jobId: "1088"
+jobName: Bug_Active_DP
 jobType: Source Aligned Data Product
-domain: operation
-alias: Write_ice7
+developerId: a7213db3-af1d-4810-ac21-e49160b82291
+domain: sale
+alias: activebugtest1
 discoveryPort:
-  name: Test_iceberg_biglake_SCD1_Mansi7
+  name: Bug_Active_DP
 inputPorts:
-  - alias: gcp_read_csv_Mansi_1
+  - alias: Ayush_New_DS_1
     isDynamic: true
-    path: gs://dabur_poc_inutdata/scd1_testing_csv/incr_1.csv
+    path: s3://byte-etl-externaldemo/sample-test/Ayush_CRDP_sample_data.csv
     optional:
       persistDataFrame: false
       advanceOptions:
         delimiter: ","
       enableDataReconciliation: false
       enforceSchema: false
-      connection: mansi_gcp_dummy
-      dataSetUrn: urn:dv:dataset:9e45f6b1-cac8-45d8-a09d-169e6326b101
+      connection: Ayush_New
+      dataSetUrn: urn:dv:dataset:fa3dfb93-b4cd-4ef4-bc0c-1ccf34ec26f5
     type: inputDelimited
 productState:
   isDynamic: true
-  alias: Write_ice
+  alias: activebugtest1
   retentionVersions: ""
-  logicalSchema:
-    properties:
-      s:
-        type: STRING
-        description: ""
+  logicalSchema: ""
   stateStoreType: loadDataIceberg
   isProfilingEnabled: false
-  updateStrategy: SCD1
-  tableName: iceberg_db.scd1_data
-  warehousePath: gs://dabur_poc_inutdata/iceberg_warehouse/
-  catalogName: random_catalog
+  updateStrategy: Overwrite
+  tableName: s3source.bugtable
+  warehousePath: s3://bp-spark-sql-library-test-acc/
+  catalogName: glue
   optional:
     persistDataFrame: false
     enableDataReconciliation: false
-    enforceSchema: false
+    enforceSchema: true
     enforceSchemaMethod: Warning
-    catalogType: biglake
-    changeTrackingColumns:
-      - value
-    timestampColumn: modified2
-    primaryKey:
-      - id
-  refreshInterval: 0 10 31 2 1
+    catalogType: glue
+  refreshInterval: None
 transformation:
   - isDynamic: true
     alias: Spark_SQL_1
-    description: str_to_date
+    description: activebugstep
     sequence: 2
     inputDataFrameList:
-      - inputDataFrame: gcp_read_csv_Mansi_1
-        tempViewName: temp
-    query: SELECT *,cast(modified AS date) as modified2 FROM temp;
+      - inputDataFrame: Ayush_New_DS_1
+        tempViewName: bugtable
+    query: select * from bugtable
     optional:
       persistDataFrame: false
     type: operationThroughSqlQuery
 controlPort:
   dataQualityRules: {}
-outputPort:
-  subscriptionChannels:
-    - channelType: Postgres
-      queryType: SQL
-    - channelType: Dataproduct
-      queryType: SQL
