@@ -1,12 +1,12 @@
-version: 0.0.2
-jobId: "953"
-jobName: Sales_Update_kavish
+version: 0.0.4
+jobId: "992"
+jobName: BG_DP_Test_QA_manifest_cleanup_test
 jobType: Source Aligned Data Product
 developerId: a7213db3-af1d-4810-ac21-e49160b82291
 domain: sale
-alias: write_to_updated_sales_test_new_discovery_test
+alias: write_down_to_sale_manifest_cleanup
 discoveryPort:
-  name: Sales_Update_kavish
+  name: BG_DP_Test_QA_manifest_cleanup_test
 inputPorts:
   - alias: Secondary_Sales_1
     isDynamic: true
@@ -22,221 +22,101 @@ inputPorts:
     type: inputParquet
 productState:
   isDynamic: true
-  alias: write_to_updated_sales_test_new_discovery_test
+  alias: write_down_to_sale_manifest_cleanup
   retentionVersions: ""
   logicalSchema:
     properties:
-      asmname:
+      City:
         type: STRING
-        description: ""
-      socode:
-        type: STRING
-        description: ""
-      soname:
-        type: STRING
-        description: ""
-      statename:
-        type: STRING
-        description: ""
-      town:
-        type: STRING
-        description: ""
-      stockistcode:
-        type: STRING
-        description: ""
-      stockistname:
-        type: STRING
-        description: ""
-      stockisttype:
-        type: STRING
-        description: ""
-      ssmcode:
-        type: STRING
-        description: ""
-      ssmname:
-        type: STRING
-        description: ""
-      ssmclass:
-        type: STRING
-        description: ""
-      ssmsubclass:
-        type: STRING
-        description: ""
-      ssmcompcode:
-        type: STRING
-        description: ""
-      ssmstatus:
-        type: STRING
-        description: ""
-      retailerid:
-        type: STRING
-        description: ""
-      retailercode:
-        type: STRING
-        description: ""
-      retailername:
-        type: STRING
-        description: ""
-      nature_of_business:
-        type: STRING
-        description: ""
-      type_of_outlet:
-        type: STRING
-        description: ""
-      outlet_class:
-        type: STRING
-        description: ""
-      rtrcmpcode:
+        description: The weather for my city's weathers's
+      Region:
         type: STRING
         description: ""
-      reachcode:
+      Country:
         type: STRING
         description: ""
-      giscode:
+      Latitude:
         type: STRING
         description: ""
-      gsttinnumber:
+      Longitude:
         type: STRING
         description: ""
-      year:
+      Timezone:
         type: STRING
         description: ""
-      month:
+      Local Time:
         type: STRING
         description: ""
-      billno:
+      Cloud ID:
         type: STRING
         description: ""
-      billdate:
-        type: DATETIME
-        description: ""
-      bgcode:
-        type: STRING
-        description: ""
-      bgname:
-        type: STRING
-        description: ""
-      categoryid:
-        type: STRING
-        description: ""
-      categorycode:
-        type: STRING
-        description: ""
-      category:
-        type: STRING
-        description: ""
-      asbrandid:
-        type: STRING
-        description: ""
-      brandcode:
-        type: STRING
-        description: ""
-      brand:
-        type: STRING
-        description: ""
-      variantid:
-        type: STRING
-        description: ""
-      variantcode:
-        type: STRING
-        description: ""
-      variant:
-        type: STRING
-        description: ""
-      skuid:
-        type: STRING
-        description: ""
-      skucode:
-        type: STRING
-        description: ""
-      sku:
-        type: STRING
-        description: ""
-      productid:
-        type: STRING
-        description: ""
-      productcode:
-        type: STRING
-        description: ""
-      productname:
-        type: STRING
-        description: ""
-      batchno:
+      Feels like Celcius:
         type: STRING
         description: ""
-      productupc:
+      Feels like fahrenheit:
         type: STRING
-        description: ""
-      drishtiorderno:
-        type: STRING
-        description: ""
-      pono:
-        type: STRING
-        description: ""
-      podate:
-        type: DATETIME
         description: ""
-      sfaorderno:
+      Gust speed in kph:
         type: STRING
         description: ""
-      sfaordate:
+      Gust speed in mph:
         type: STRING
         description: ""
-      sfalat:
+      Humidity:
         type: STRING
         description: ""
-      sfalng:
+      Is day time?:
         type: STRING
         description: ""
-      starttime:
+      Last update:
         type: STRING
         description: ""
-      endtime:
+      Last updated time in epoch:
         type: STRING
         description: ""
-      pcs:
+      Precipitation in inch:
         type: STRING
         description: ""
-      cases:
+      Precipitation in mm:
         type: STRING
         description: ""
-      value_ptr:
+      Pressure:
         type: STRING
         description: ""
-      salesvalue:
+      Precipitation in mb:
         type: STRING
         description: ""
-      value_pts:
+      Temperature in celcius:
         type: STRING
         description: ""
-      newproduct:
+      Temperature in fahrenheit:
         type: STRING
         description: ""
-      test:
+      UV:
         type: STRING
         description: ""
-      state:
+      Visibility in km:
         type: STRING
         description: ""
-      district:
+      Visibility in miles:
         type: STRING
         description: ""
-      focusbrand:
+      Wind Degree:
         type: STRING
         description: ""
-      design:
+      Wind Direction:
         type: STRING
         description: ""
-      bucode:
+      Wind in kph:
         type: STRING
         description: ""
-      buname:
+      Wind in mph:
         type: STRING
         description: ""
   stateStoreType: loadDataIceberg
   isProfilingEnabled: false
-  updateStrategy: Overwrite
-  tableName: s3source.dummy_sales_test_update
+  updateStrategy: Append
+  tableName: s3source.salestestupdate_manifest_cleanup
   warehousePath: s3://bp-spark-sql-library-test-acc/
   catalogName: glue
   optional:
@@ -245,16 +125,16 @@ productState:
     enforceSchema: false
     enforceSchemaMethod: Warning
     catalogType: glue
-  refreshInterval: None
+  refreshInterval: "* * 5 * 5"
 transformation:
   - isDynamic: true
     alias: Spark_SQL_1
-    description: data source spark kavish test updated discovery test
+    description: testSpark_manifest_cleanup
     sequence: 2
     inputDataFrameList:
       - inputDataFrame: Secondary_Sales_1
-        tempViewName: sales_updated_new_12
-    query: Select * from sales_updated_new_12
+        tempViewName: salestestupdate_manifest_cleanup
+    query: Select * from salestestupdate_manifest_cleanup
     optional:
       persistDataFrame: false
     type: operationThroughSqlQuery
