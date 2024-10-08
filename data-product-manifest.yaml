@@ -1,4 +1,4 @@
-version: 0.0.4
+version: 0.0.5
 jobId: "992"
 jobName: BG_DP_Test_QA_manifest_cleanup_test
 jobType: Source Aligned Data Product
@@ -115,7 +115,7 @@ productState:
         description: ""
   stateStoreType: loadDataIceberg
   isProfilingEnabled: false
-  updateStrategy: Append
+  updateStrategy: Overwrite
   tableName: s3source.salestestupdate_manifest_cleanup
   warehousePath: s3://bp-spark-sql-library-test-acc/
   catalogName: glue
