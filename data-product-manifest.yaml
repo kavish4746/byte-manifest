@@ -1,146 +1,241 @@
-version: 0.0.1
-jobId: "1100"
-jobName: Customer_Details_Archive_test
+jobId: "953"
+jobName: Sales_Update_kavish_2
 jobType: Source Aligned Data Product
 developerId: a7213db3-af1d-4810-ac21-e49160b82291
-domain: sale
-alias: Write_to_iceberg_for_Customer_schedule_archive_test
+domain: finance
+alias: write_to_updated_sales_test_new_discovery_test
 discoveryPort:
-  name: Customer_Details_Archive_test
+  name: Sales_Update_kavish_2
 inputPorts:
-  - alias: Customer_Master_2
+  - alias: Secondary_Sales_1
     isDynamic: true
-    path: s3://dataverse-sale/datasets/##file_name##
+    path: s3://bp-spark-sql-library-test-acc/secondary_sales_parquet/
     optional:
       persistDataFrame: false
       advanceOptions:
-        delimiter: ","
+        mergeSchema: true
       enableDataReconciliation: false
       enforceSchema: false
-      connection: s3 with Role miloni
-      dataSetUrn: urn:dv:dataset:640eff57-8c6d-4579-9f5a-b1caac6981f3
-    type: inputDelimited
+      connection: Base S3 Connectivity
+      dataSetUrn: urn:dv:dataset:5a075ca4-46b2-4988-ba1b-16c0cdf30f4f
+    type: inputParquet
 productState:
   isDynamic: true
-  alias: Write_to_iceberg_for_Customer_schedule_archive_test
+  alias: write_to_updated_sales_test_new_discovery_test
   retentionVersions: ""
   logicalSchema:
     properties:
-      Customer_ID:
+      asmname:
         type: STRING
-        description: Unique identifier for each customer.
-        sourceColumn: Customer_ID
-        sourceTable: customers
-      First_Name:
+        description: ""
+      socode:
         type: STRING
-        description: First name of the customer.
-        sourceColumn: First_Name
-        sourceTable: customers
-        isPII: true
-      Middle_Name:
+        description: ""
+      soname:
         type: STRING
-        description: Middle name of the customer.
-        sourceColumn: Middle_Name
-        sourceTable: customers
-        isPII: true
-      Last_Name:
+        description: ""
+      statename:
         type: STRING
-        description: Last name of the customer.
-        sourceColumn: Last_Name
-        sourceTable: customers
-        isPII: true
-      Date_of_Birth:
+        description: ""
+      town:
         type: STRING
-        description: Date of birth of the customer.
-        sourceColumn: Date_of_Birth
-        sourceTable: customers
-        isPII: true
-      Age:
+        description: ""
+      stockistcode:
         type: STRING
-        description: Age of the customer.
-        sourceColumn: Age
-        sourceTable: customers
-      Gender:
+        description: ""
+      stockistname:
         type: STRING
-        description: Gender of the customer.
-        sourceColumn: Gender
-        sourceTable: customers
-      Email:
+        description: ""
+      stockisttype:
         type: STRING
-        description: Email address of the customer.
-        sourceColumn: Email
-        sourceTable: customers
-        isPII: true
-      Phone_Number:
+        description: ""
+      ssmcode:
         type: STRING
-        description: Phone number of the customer.
-        sourceColumn: Phone_Number
-        sourceTable: customers
-        isPII: true
-      Loyalty_Id:
+        description: ""
+      ssmname:
         type: STRING
-        description: Identifier for the loyalty program associated with the customer.
-        sourceColumn: Loyalty_Id
-        sourceTable: customers
-      State:
+        description: ""
+      ssmclass:
         type: STRING
-        description: State of residence of the customer.
-        sourceColumn: State
-        sourceTable: customers
-      Country:
+        description: ""
+      ssmsubclass:
         type: STRING
-        description: Country of residence of the customer.
-        sourceColumn: Country
-        sourceTable: customers
-      Zipcode:
+        description: ""
+      ssmcompcode:
         type: STRING
-        description: Zip code of the customer's address.
-        sourceColumn: Zipcode
-        sourceTable: customers
-      Household_Income:
+        description: ""
+      ssmstatus:
         type: STRING
-        description: Household income of the customer.
-        sourceColumn: Household_Income
-        sourceTable: customers
-        isPII: true
-      Consent_Flag:
+        description: ""
+      retailerid:
         type: STRING
-        description: Flag indicating whether the customer has given consent for
-          marketing communication.
-        sourceColumn: Consent_Flag
-        sourceTable: customers
-      Employee_Flag:
+        description: ""
+      retailercode:
         type: STRING
-        description: Flag indicating whether the customer is an employee.
-        sourceColumn: Employee_Flag
-        sourceTable: customers
-      Relationship_SPOC_ID:
+        description: ""
+      retailername:
         type: STRING
-        description: Identifier for the single point of contact (SPOC) associated with
-          the customer's relationship.
-        sourceColumn: Relationship_SPOC_ID
-        sourceTable: customers
-      Relationship_SPOC_Store_ID:
+        description: ""
+      nature_of_business:
         type: STRING
-        description: Identifier for the store associated with the single point of
-          contact (SPOC) of the customer's relationship.
-        sourceColumn: Relationship_SPOC_Store_ID
-        sourceTable: customers
-      City:
+        description: ""
+      type_of_outlet:
         type: STRING
-        description: City of residence of the customer.
-        sourceColumn: City
-        sourceTable: customers
-      Card_Id:
+        description: ""
+      outlet_class:
         type: STRING
-        description: Identifier for the card associated with the customer.
-        sourceColumn: Card_Id
-        sourceTable: customers
-        isPII: true
+        description: ""
+      rtrcmpcode:
+        type: STRING
+        description: ""
+      reachcode:
+        type: STRING
+        description: ""
+      giscode:
+        type: STRING
+        description: ""
+      gsttinnumber:
+        type: STRING
+        description: ""
+      year:
+        type: STRING
+        description: ""
+      month:
+        type: STRING
+        description: ""
+      billno:
+        type: STRING
+        description: ""
+      billdate:
+        type: DATETIME
+        description: ""
+      bgcode:
+        type: STRING
+        description: ""
+      bgname:
+        type: STRING
+        description: ""
+      categoryid:
+        type: STRING
+        description: ""
+      categorycode:
+        type: STRING
+        description: ""
+      category:
+        type: STRING
+        description: ""
+      asbrandid:
+        type: STRING
+        description: ""
+      brandcode:
+        type: STRING
+        description: ""
+      brand:
+        type: STRING
+        description: ""
+      variantid:
+        type: STRING
+        description: ""
+      variantcode:
+        type: STRING
+        description: ""
+      variant:
+        type: STRING
+        description: ""
+      skuid:
+        type: STRING
+        description: ""
+      skucode:
+        type: STRING
+        description: ""
+      sku:
+        type: STRING
+        description: ""
+      productid:
+        type: STRING
+        description: ""
+      productcode:
+        type: STRING
+        description: ""
+      productname:
+        type: STRING
+        description: ""
+      batchno:
+        type: STRING
+        description: ""
+      productupc:
+        type: STRING
+        description: ""
+      drishtiorderno:
+        type: STRING
+        description: ""
+      pono:
+        type: STRING
+        description: ""
+      podate:
+        type: DATETIME
+        description: ""
+      sfaorderno:
+        type: STRING
+        description: ""
+      sfaordate:
+        type: STRING
+        description: ""
+      sfalat:
+        type: STRING
+        description: ""
+      sfalng:
+        type: STRING
+        description: ""
+      starttime:
+        type: STRING
+        description: ""
+      endtime:
+        type: STRING
+        description: ""
+      pcs:
+        type: STRING
+        description: ""
+      cases:
+        type: STRING
+        description: ""
+      value_ptr:
+        type: STRING
+        description: ""
+      salesvalue:
+        type: STRING
+        description: ""
+      value_pts:
+        type: STRING
+        description: ""
+      newproduct:
+        type: STRING
+        description: ""
+      test:
+        type: STRING
+        description: ""
+      state:
+        type: STRING
+        description: ""
+      district:
+        type: STRING
+        description: ""
+      focusbrand:
+        type: STRING
+        description: ""
+      design:
+        type: STRING
+        description: ""
+      bucode:
+        type: STRING
+        description: ""
+      buname:
+        type: STRING
+        description: ""
   stateStoreType: loadDataIceberg
-  isProfilingEnabled: true
+  isProfilingEnabled: false
   updateStrategy: Overwrite
-  tableName: s3source.customer_details_sadp_schedule_archive_test
+  tableName: s3source.dummy_sales_test_update
   warehousePath: s3://bp-spark-sql-library-test-acc/
   catalogName: glue
   optional:
@@ -149,26 +244,18 @@ productState:
     enforceSchema: false
     enforceSchemaMethod: Warning
     catalogType: glue
-  refreshInterval: 5 * * 5 2
+  refreshInterval: None
 transformation:
   - isDynamic: true
     alias: Spark_SQL_1
-    description: transformation_archive_test
+    description: data source spark kavish test updated discovery test
     sequence: 2
     inputDataFrameList:
-      - inputDataFrame: Customer_Master_2
-        tempViewName: customer_master_scheduler_archive_test
-    query: select * from customer_master_scheduler_archive_test
+      - inputDataFrame: Secondary_Sales_1
+        tempViewName: sales_updated_new_12
+    query: Select * from sales_updated_new_12
     optional:
       persistDataFrame: false
     type: operationThroughSqlQuery
 controlPort:
-  dataQualityRules:
-    NullValueCheck:
-      productState:
-        checks:
-          - column: Card_Id
-            expression: <=
-            number: 1
-            owner: Miloni Shah
-        referenceAlias: Write_to_iceberg_for_Customer_schedule_archive_test
+  dataQualityRules: {}
