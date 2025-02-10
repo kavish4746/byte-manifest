@@ -3,11 +3,11 @@ jobName: Dp Filter Issue
 jobType: Consumption Ready Data Product
 developerId: a421c8d2-ced6-4227-993e-04155a8feb50
 domain: sale
-alias: Write_to_iceberg_for_CRDP_Weather_Forecasting
+alias: Write_to_iceberg_for_CRDP_Weather_Forecasting_dp_filterTest
 discoveryPort:
   name: Dp Filter Issue
 inputPorts:
-  - alias: Weather_Data_-_2024__1
+  - alias: Weather_Data_-_2024__1_dp_filterTest
     isDynamic: true
     dataProductUrn: urn:dv:dataproduct:bc18b584-358b-4595-897a-7aa293c7935f
     filter: localtime > '2024-01-01 00:00:00'
@@ -15,7 +15,7 @@ inputPorts:
     optional:
       persistDataFrame: false
     type: dataproduct
-  - alias: Weather_Forecasting_For_City_1
+  - alias: Weather_Forecasting_For_City_1_dp_filterTest
     isDynamic: true
     dataProductUrn: urn:dv:dataproduct:68a5d66a-2091-4dbc-805f-4a08b5b80574
     filter: localtime > '2024-01-01 00:00:00'
@@ -25,7 +25,7 @@ inputPorts:
     type: dataproduct
 productState:
   isDynamic: true
-  alias: Write_to_iceberg_for_CRDP_Weather_Forecasting
+  alias: Write_to_iceberg_for_CRDP_Weather_Forecasting_dp_filterTest
   retentionVersions: ""
   logicalSchema:
     properties:
