@@ -1,0 +1,3 @@
+"pk_UserID","email","password","firstName","photo","phone","createdDate","modifiedDate","status","lastLogin","lastName","fk_TimeZoneID","isVerify","fk_CreatedBy","AppKeyEnabled","AppKey","lastNotifiedDate","hasUpdateProfile","defaultProjectID","showTermsCond","termsLastViewDate","userThemeID","enableMFA","MFAOptions","Tags","preferredLanguage","userRole"
+"182",finance_demo,*AE288E66FB3CF15987CAA67D51A20B9BE5EFCDEF,Finance demo,"","",1594720244,1594720244,1,1682298277,"",,1,,1,"",1594720244,0,,0,0,,0,"","","",""
+a7213db3-af1d-4810-ac21-e49160b82291,kavish.shah@accenture.com,KAVI@1234,Kavish Shah,,,1594720244,1594720244,1,1682298277,,,1,,1,,1594720244,0,,0,0,,0,"",,,
